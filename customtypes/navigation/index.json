@@ -27,6 +27,15 @@
                 "placeholder": "Link for navigation item",
                 "select": null
               }
+            },
+            "cta": {
+              "type": "Boolean",
+              "config": {
+                "label": "CTA",
+                "placeholder_false": "false",
+                "placeholder_true": "true",
+                "default_value": false
+              }
             }
           }
         }

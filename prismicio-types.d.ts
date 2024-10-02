@@ -27,6 +27,17 @@ export interface NavigationDocumentDataLinksItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField;
+
+  /**
+   * CTA field in *Navigation → Links*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: navigation.links[].cta
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  cta: prismic.BooleanField;
 }
 
 /**
@@ -164,6 +175,17 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   siteTitle: prismic.TitleField;
+
+  /**
+   * Site Logo field in *Settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.site_logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  site_logo: prismic.ImageField<never>;
 }
 
 /**
@@ -672,6 +694,17 @@ declare module "@prismicio/client" {
       repositoryNameOrEndpoint: string,
       options?: prismic.ClientConfig,
     ): prismic.Client<AllDocumentTypes>;
+  }
+
+  interface CreateWriteClient {
+    (
+      repositoryNameOrEndpoint: string,
+      options: prismic.WriteClientConfig,
+    ): prismic.WriteClient<AllDocumentTypes>;
+  }
+
+  interface CreateMigration {
+    (): prismic.Migration<AllDocumentTypes>;
   }
 
   namespace Content {

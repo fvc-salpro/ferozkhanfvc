@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --font-montserrat: 'Montserrat', sans-serif;
-  }
-  
-  html {
-    font-family: var(--font-montserrat);
-  }
-  
+html {
+    @apply font-sans
+}

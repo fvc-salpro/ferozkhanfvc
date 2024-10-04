@@ -77,7 +77,7 @@ const Hero = ({ slice }: HeroProps) => {
               slice.primary.buttons.map((button, index) => {
                 return (
                   <ButtonLink
-                    type={button.button_type}
+                    type={button.button_type === "secondary" ? "secondary" : "primary"}
                     key={index}
                     field={button.button_link}
                   >

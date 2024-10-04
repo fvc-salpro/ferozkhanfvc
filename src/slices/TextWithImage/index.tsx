@@ -21,7 +21,7 @@ const TextWithImage = ({ slice }: TextWithImageProps) => {
           {slice.variation === "withButton" && slice.primary.buttonLink ? (
             <ButtonLink
               field={slice.primary.buttonLink}
-              type={slice.primary.button_type}
+              type={slice.primary.button_type === "secondary" ? "secondary" : "primary"}
             >
               {slice.primary.buttonText || "Learn more"}
             </ButtonLink>

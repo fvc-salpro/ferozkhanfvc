@@ -40,7 +40,7 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => {
           {isFilled.link(slice.primary.button_link) && (
             <ButtonLink
               className="mt-[30px]"
-              type={slice.primary.type}
+              type={slice.primary.type === "secondary" ? "secondary" : "primary"}
               field={slice.primary.button_link}
             >
               {slice.primary.button_text}

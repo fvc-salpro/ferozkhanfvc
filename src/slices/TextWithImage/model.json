@@ -11,13 +11,22 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "TextWithImage",
       "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading3,em"
+          }
+        },
         "text": {
           "type": "StructuredText",
           "config": {
             "label": "Text",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,heading1,heading2,heading3,strong,em,hyperlink,list-item,o-list-item"
+            "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item"
           }
         },
         "image": {
@@ -29,6 +38,15 @@
               "height": 1200
             },
             "thumbnails": []
+          }
+        },
+        "image_left": {
+          "type": "Boolean",
+          "config": {
+            "label": "Image Left",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
           }
         }
       },
@@ -42,13 +60,22 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "TextWithImage",
       "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading3,em"
+          }
+        },
         "text": {
           "type": "StructuredText",
           "config": {
             "label": "Text",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,heading1,heading2,heading3,strong,em,hyperlink,o-list-item,list-item"
+            "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item"
           }
         },
         "buttonLink": {
@@ -66,12 +93,32 @@
             "placeholder": ""
           }
         },
+        "button_type": {
+          "type": "Select",
+          "config": {
+            "label": "Button Type",
+            "placeholder": "",
+            "options": [
+              "primary",
+              "secondary"
+            ]
+          }
+        },
         "image": {
           "type": "Image",
           "config": {
             "label": "Image",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "image_left": {
+          "type": "Boolean",
+          "config": {
+            "label": "Image Left",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
           }
         }
       },

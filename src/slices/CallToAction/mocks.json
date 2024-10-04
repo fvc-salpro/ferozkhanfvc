@@ -1,0 +1,48 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading4",
+						"content": {
+							"text": "Arrive"
+						}
+					}
+				]
+			},
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cupidatat veniam enim voluptate duis in esse mollit ullamco sint do veniam sint eiusmod. Ea velit exercitation duis officia ut quis ea id excepteur eu. Fugiat sint elit eiusmod aliquip tempor est proident cillum adipisicing duis."
+						}
+					}
+				]
+			},
+			"button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "poem",
+				"type": "Text"
+			},
+			"button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com"
+				}
+			},
+			"type": {
+				"__TYPE__": "FieldContent",
+				"value": "primary",
+				"type": "Select"
+			}
+		},
+		"items": []
+	}
+]

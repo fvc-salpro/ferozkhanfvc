@@ -23,9 +23,9 @@ export function Bounded({
         "px-6",
         yPadding === "null" && "py-[0px] md:py-[0px]",
         yPadding === "sm" && "py-[10px] md:py-[10px]",
-        yPadding === "base" && "py-20 md:py-28",
+        yPadding === "base" && "py-[30px] md:py-[46px]",
         yPadding === "lg" && "py-32 md:py-48",
-        className,
+        className
       )}
     >
       <div className="mx-auto w-full container">{children}</div>

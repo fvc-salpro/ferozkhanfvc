@@ -11,28 +11,22 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "Hero",
       "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1,em"
+          }
+        },
         "text": {
           "type": "StructuredText",
           "config": {
             "label": "Text",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,heading1,strong,em"
-          }
-        },
-        "buttonLink": {
-          "type": "Link",
-          "config": {
-            "label": "Button Link",
-            "placeholder": "",
-            "select": null
-          }
-        },
-        "buttonText": {
-          "type": "Text",
-          "config": {
-            "label": "Button Text",
-            "placeholder": ""
+            "multi": "paragraph,strong,em"
           }
         },
         "backgroundImage": {
@@ -41,6 +35,42 @@
             "label": "Background Image",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "buttons": {
+          "type": "Group",
+          "config": {
+            "label": "Buttons",
+            "repeat": true,
+            "fields": {
+              "button_text": {
+                "type": "Text",
+                "config": {
+                  "label": "Button Text",
+                  "placeholder": ""
+                }
+              },
+              "button_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Button Link",
+                  "placeholder": "",
+                  "allowTargetBlank": false,
+                  "select": null
+                }
+              },
+              "button_type": {
+                "type": "Select",
+                "config": {
+                  "label": "Button Type",
+                  "placeholder": "",
+                  "options": [
+                    "primary",
+                    "secondary"
+                  ]
+                }
+              }
+            }
           }
         }
       },

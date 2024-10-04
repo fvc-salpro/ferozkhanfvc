@@ -7,37 +7,14 @@
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
-						"type": "heading1",
-						"content": {
-							"text": "Steel",
-							"spans": []
-						},
-						"direction": "ltr"
-					},
-					{
 						"type": "paragraph",
 						"content": {
-							"text": "Laboris adipisicing est duis in laboris in officia Lorem officia enim culpa consequat sint ut proident.",
-							"spans": []
-						},
-						"direction": "ltr"
+							"text": "Voluptate labore duis do laboris enim exercitation minim dolore Lorem culpa."
+						}
 					}
 				]
 			},
-			"buttonLink": {
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "http://google.com"
-				}
-			},
-			"buttonText": {
-				"__TYPE__": "FieldContent",
-				"value": "matter",
-				"type": "Text"
-			},
 			"backgroundImage": {
-				"__TYPE__": "ImageContent",
 				"url": "https://images.unsplash.com/photo-1616679312958-a86d9539afae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3MTk1MzAwNDZ8MA&ixlib=rb-4.0.3&q=85",
 				"alt": "orange fruit on white ceramic plate",
 				"origin": {
@@ -56,7 +33,56 @@
 						"y": 0
 					}
 				},
+				"credits": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Increase"
+						}
+					}
+				]
+			},
+			"buttons": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"button_link",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com"
+									}
+								}
+							],
+							[
+								"button_text",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "your",
+									"type": "Text"
+								}
+							],
+							[
+								"button_type",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "secondary",
+									"type": "Select"
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": [

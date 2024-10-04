@@ -9,21 +9,41 @@ import { Heading } from "./Heading";
 
 const defaultComponents: JSXMapSerializer = {
   heading1: ({ children }) => (
-    <Heading as="h1" className="mb-7 mt-12 first:mt-0 last:mb-0">
+    <Heading as="h1" className="mb-7 mt-12 first:mt-0 last:mb-0 text-dark-primary text-balance">
       {children}
     </Heading>
   ),
   heading2: ({ children }) => (
-    <Heading as="h2" size="md" className="mb-7 mt-12 first:mt-0 last:mb-0">
+    <Heading as="h2" className="mb-7 mt-12 first:mt-0 last:mb-0 text-dark-primary text-balance">
       {children}
     </Heading>
   ),
   heading3: ({ children }) => (
-    <Heading as="h3" size="sm" className="mb-7 mt-12 first:mt-0 last:mb-0">
+    <Heading as="h3" className="mb-7 mt-12 first:mt-0 last:mb-0 text-dark-primary text-balance">
       {children}
     </Heading>
   ),
-  paragraph: ({ children }) => <p className="mb-7 last:mb-0">{children}</p>,
+  heading4: ({ children }) => (
+    <Heading as="h4" className="mb-7 mt-12 first:mt-0 last:mb-0 text-dark-primary text-balance">
+      {children}
+    </Heading>
+  ),
+  heading5: ({ children }) => (
+    <Heading as="h5" className="mb-7 mt-12 first:mt-0 last:mb-0 text-dark-primary text-balance">
+      {children}
+    </Heading>
+  ),
+  heading6: ({ children }) => (
+    <Heading as="h6" className="mb-7 mt-12 first:mt-0 last:mb-0 text-dark-primary text-balance">
+      {children}
+    </Heading>
+  ),
+  em: ({ children }) => (
+    <em className="bg-gradient-to-b from-primary to-secondary bg-clip-text not-italic text-transparent">
+      {children}
+    </em>
+  ),
+  paragraph: ({ children }) => <p className="mb-7 last:mb-0 text-b16 text-gray-primary">{children}</p>,
   oList: ({ children }) => (
     <ol className="mb-7 pl-4 last:mb-0 md:pl-6">{children}</ol>
   ),

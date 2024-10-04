@@ -23,8 +23,9 @@ export default function AnimatedContent({
       } else {
         gsap.fromTo(
           container.current,
-          { y: 100 },
+          { y: 100, opacity: 0, },
           {
+            opacity: 1,
             y: 0,
             ease: "power2.inOut",
             duration: 0.5,

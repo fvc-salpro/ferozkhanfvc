@@ -12,7 +12,7 @@ export default async function Header() {
 
   return (
     <Bounded as="header" yPadding="null">
-      <div className="px-[32px] py-[10px] rounded-[12px] flex flex-wrap items-center justify-between gap-x-6 gap-y-3 leading-none border-b border-gray-primary/25 shadow-md">
+      <div className="relative z-[1] shadow-primary/5 md:px-[32px] px-[24px] py-[10px] rounded-[12px] flex flex-wrap items-center justify-between gap-x-6 gap-y-3 leading-none border-b border-gray-primary/10 shadow-md">
         <PrismicNextLink
           href="/"
           className="text-xl font-semibold tracking-tight"

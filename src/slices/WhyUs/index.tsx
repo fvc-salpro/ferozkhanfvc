@@ -18,7 +18,7 @@ const WhyUs = ({ slice }: WhyUsProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <Bounded as="div" className="bg-white px-[32px]">
+      <Bounded as="div" className="bg-white md:px-[32px] px-[24px]">
         <div className="flex flex-col justify-center items-center">
           <div className="flex flex-col justify-center items-center text-center max-w-[950px]">
             <PrismicRichText field={slice.primary.heading} />

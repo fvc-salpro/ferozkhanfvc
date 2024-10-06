@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type CountryDocumentDataSlicesSlice =
+  | FaqsSlice
   | TextWithImageSlice
   | ServicesSlice
   | CallToActionSlice;
@@ -163,6 +164,8 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | FaqsSlice
+  | VideoReviewsSlice
   | ReviewsSlice
   | AboutCeoSlice
   | CountriesSlice
@@ -258,6 +261,7 @@ export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 type ServiceDocumentDataSlicesSlice =
+  | FaqsSlice
   | CountriesSlice
   | CallToActionSlice
   | WhyUsSlice
@@ -695,6 +699,83 @@ export type CountriesSlice = prismic.SharedSlice<
   "countries",
   CountriesSliceVariation
 >;
+
+/**
+ * Item in *Faqs → Default → Primary → Faqs*
+ */
+export interface FaqsSliceDefaultPrimaryFaqsItem {
+  /**
+   * Question field in *Faqs → Default → Primary → Faqs*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faqs.default.primary.faqs[].question
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  question: prismic.KeyTextField;
+
+  /**
+   * Answer field in *Faqs → Default → Primary → Faqs*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faqs.default.primary.faqs[].answer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  answer: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Faqs → Default → Primary*
+ */
+export interface FaqsSliceDefaultPrimary {
+  /**
+   * Image field in *Faqs → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faqs.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Faqs field in *Faqs → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: faqs.default.primary.faqs[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  faqs: prismic.GroupField<Simplify<FaqsSliceDefaultPrimaryFaqsItem>>;
+}
+
+/**
+ * Default variation for Faqs Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FaqsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FaqsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Faqs*
+ */
+type FaqsSliceVariation = FaqsSliceDefault;
+
+/**
+ * Faqs Shared Slice
+ *
+ * - **API ID**: `faqs`
+ * - **Description**: Faqs
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FaqsSlice = prismic.SharedSlice<"faqs", FaqsSliceVariation>;
 
 /**
  * Item in *Hero → Default → Primary → Buttons*
@@ -1408,6 +1489,88 @@ export type TextWithImageSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *VideoReviews → Default → Primary → Reviews*
+ */
+export interface VideoReviewsSliceDefaultPrimaryReviewsItem {
+  /**
+   * Review Link field in *VideoReviews → Default → Primary → Reviews*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter Youtube Video Link
+   * - **API ID Path**: video_reviews.default.primary.reviews[].review_link
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  review_link: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *VideoReviews → Default → Primary*
+ */
+export interface VideoReviewsSliceDefaultPrimary {
+  /**
+   * Heading field in *VideoReviews → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_reviews.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Text field in *VideoReviews → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_reviews.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * Reviews field in *VideoReviews → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video_reviews.default.primary.reviews[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  reviews: prismic.GroupField<
+    Simplify<VideoReviewsSliceDefaultPrimaryReviewsItem>
+  >;
+}
+
+/**
+ * Default variation for VideoReviews Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoReviewsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<VideoReviewsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *VideoReviews*
+ */
+type VideoReviewsSliceVariation = VideoReviewsSliceDefault;
+
+/**
+ * VideoReviews Shared Slice
+ *
+ * - **API ID**: `video_reviews`
+ * - **Description**: VideoReviews
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type VideoReviewsSlice = prismic.SharedSlice<
+  "video_reviews",
+  VideoReviewsSliceVariation
+>;
+
+/**
  * Item in *WhyUs → Default → Primary → Cards*
  */
 export interface WhyUsSliceDefaultPrimaryCardsItem {
@@ -1552,6 +1715,11 @@ declare module "@prismicio/client" {
       CountriesSliceDefaultPrimary,
       CountriesSliceVariation,
       CountriesSliceDefault,
+      FaqsSlice,
+      FaqsSliceDefaultPrimaryFaqsItem,
+      FaqsSliceDefaultPrimary,
+      FaqsSliceVariation,
+      FaqsSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimaryButtonsItem,
       HeroSliceDefaultPrimary,
@@ -1593,6 +1761,11 @@ declare module "@prismicio/client" {
       TextWithImageSliceVariation,
       TextWithImageSliceDefault,
       TextWithImageSliceWithButton,
+      VideoReviewsSlice,
+      VideoReviewsSliceDefaultPrimaryReviewsItem,
+      VideoReviewsSliceDefaultPrimary,
+      VideoReviewsSliceVariation,
+      VideoReviewsSliceDefault,
       WhyUsSlice,
       WhyUsSliceDefaultPrimaryCardsItem,
       WhyUsSliceDefaultPrimary,

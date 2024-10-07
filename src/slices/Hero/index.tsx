@@ -65,13 +65,13 @@ const Hero = ({ slice }: HeroProps) => {
 
   return (
     <section className="relative bg-white">
-      <Bounded yPadding="base" className="relative px-[32px]">
+      <Bounded yPadding="base" className="relative md:px-[32px] px-[24px]">
         <div className="grid justify-items-center gap-8">
           <div className="max-w-full lg:max-w-[810px] text-center">
             <PrismicRichText field={slice.primary.heading} />
             <PrismicRichText field={slice.primary.text} />
           </div>
-          <div className="flex flex-row items-center gap-[16px]">
+          <div className="flex md:flex-row flex-col items-center gap-[16px]">
             {slice.primary.buttons &&
               slice.primary.buttons.length > 0 &&
               slice.primary.buttons.map((button, index) => {

@@ -1,0 +1,104 @@
+{
+  "id": "about_ceo",
+  "type": "SharedSlice",
+  "name": "AboutCeo",
+  "description": "AboutCeo",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading4"
+          }
+        },
+        "text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "name": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Name",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading5"
+          }
+        },
+        "deligation": {
+          "type": "Text",
+          "config": {
+            "label": "Deligation",
+            "placeholder": ""
+          }
+        },
+        "short_description": {
+          "type": "Text",
+          "config": {
+            "label": "Short Description",
+            "placeholder": ""
+          }
+        },
+        "key_points": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Key Points",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,list-item,o-list-item,heading6,heading5"
+          }
+        },
+        "button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button Link",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        },
+        "button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button Text",
+            "placeholder": ""
+          }
+        },
+        "button_type": {
+          "type": "Select",
+          "config": {
+            "label": "Button Type",
+            "placeholder": "",
+            "options": [
+              "primary",
+              "secondary"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

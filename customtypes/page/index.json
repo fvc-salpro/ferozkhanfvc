@@ -35,6 +35,21 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "faqs": {
+              "type": "SharedSlice"
+            },
+            "video_reviews": {
+              "type": "SharedSlice"
+            },
+            "reviews": {
+              "type": "SharedSlice"
+            },
+            "about_ceo": {
+              "type": "SharedSlice"
+            },
+            "countries": {
+              "type": "SharedSlice"
+            },
             "call_to_action": {
               "type": "SharedSlice"
             },

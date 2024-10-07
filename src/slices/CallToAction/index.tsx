@@ -22,7 +22,7 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => {
       <Bounded
         as="div"
         yPadding="base"
-        className="bg-white px-[32px] min-h-[420px] flex justify-center items-center relative overflow-hidden"
+        className="bg-white md:px-[32px] px-[24px] min-h-[420px] flex justify-center items-center relative overflow-hidden"
       >
         <Image
           className="opacity-35 object-cover object-center"

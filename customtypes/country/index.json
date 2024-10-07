@@ -1,7 +1,7 @@
 {
   "format": "page",
-  "id": "service",
-  "label": "Service",
+  "id": "country",
+  "label": "Country",
   "repeatable": true,
   "status": true,
   "json": {
@@ -19,27 +19,10 @@
           "placeholder": ""
         }
       },
-      "description": {
-        "type": "StructuredText",
-        "config": {
-          "label": "Description",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "multi": "paragraph,strong,hyperlink"
-        }
-      },
-      "service_icon": {
+      "country_banner": {
         "type": "Image",
         "config": {
-          "label": "Service Icon",
-          "constraint": {},
-          "thumbnails": []
-        }
-      },
-      "service_banner": {
-        "type": "Image",
-        "config": {
-          "label": "Service Banner",
+          "label": "Country banner",
           "constraint": {},
           "thumbnails": []
         }
@@ -52,16 +35,13 @@
             "faqs": {
               "type": "SharedSlice"
             },
-            "countries": {
+            "text_with_image": {
+              "type": "SharedSlice"
+            },
+            "services": {
               "type": "SharedSlice"
             },
             "call_to_action": {
-              "type": "SharedSlice"
-            },
-            "why_us": {
-              "type": "SharedSlice"
-            },
-            "text_with_image": {
               "type": "SharedSlice"
             }
           }

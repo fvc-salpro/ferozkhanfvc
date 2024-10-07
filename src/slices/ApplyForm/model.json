@@ -1,0 +1,26 @@
+{
+  "id": "apply_form",
+  "type": "SharedSlice",
+  "name": "ApplyForm",
+  "description": "ApplyForm",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "header": {
+          "type": "Text",
+          "config": {
+            "label": "Header",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

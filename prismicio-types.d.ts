@@ -164,6 +164,7 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | ApplyFormSlice
   | FaqsSlice
   | VideoReviewsSlice
   | ReviewsSlice
@@ -261,6 +262,7 @@ export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 type ServiceDocumentDataSlicesSlice =
+  | ApplyFormSlice
   | FaqsSlice
   | CountriesSlice
   | CallToActionSlice
@@ -557,6 +559,51 @@ type AboutCeoSliceVariation = AboutCeoSliceDefault;
 export type AboutCeoSlice = prismic.SharedSlice<
   "about_ceo",
   AboutCeoSliceVariation
+>;
+
+/**
+ * Primary content in *ApplyForm → Default → Primary*
+ */
+export interface ApplyFormSliceDefaultPrimary {
+  /**
+   * Header field in *ApplyForm → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: apply_form.default.primary.header
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  header: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ApplyForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ApplyFormSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ApplyFormSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ApplyForm*
+ */
+type ApplyFormSliceVariation = ApplyFormSliceDefault;
+
+/**
+ * ApplyForm Shared Slice
+ *
+ * - **API ID**: `apply_form`
+ * - **Description**: ApplyForm
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ApplyFormSlice = prismic.SharedSlice<
+  "apply_form",
+  ApplyFormSliceVariation
 >;
 
 /**
@@ -1707,6 +1754,10 @@ declare module "@prismicio/client" {
       AboutCeoSliceDefaultPrimary,
       AboutCeoSliceVariation,
       AboutCeoSliceDefault,
+      ApplyFormSlice,
+      ApplyFormSliceDefaultPrimary,
+      ApplyFormSliceVariation,
+      ApplyFormSliceDefault,
       CallToActionSlice,
       CallToActionSliceDefaultPrimary,
       CallToActionSliceVariation,

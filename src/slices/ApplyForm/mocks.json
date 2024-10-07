@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"header": {
+				"__TYPE__": "FieldContent",
+				"value": "till",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

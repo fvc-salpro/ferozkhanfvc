@@ -1,11 +1,10 @@
 "use client";
 
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { JSXMapSerializer, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@/components/PrismicRichText";
 import { Bounded } from "@/components/Bounded";
-import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -51,6 +50,7 @@ const Faqs = ({ slice }: FaqsProps): JSX.Element => {
                     className="duration-500 transition-all ease-in-out"
                     width={16}
                     height={16}
+                    alt="Show/Hide Icon for FAQ"
                     src={`${openIndex === index ? "/add-icon.svg" : "/subtract-icon.svg"}`}
                   />
                   {faq.question}

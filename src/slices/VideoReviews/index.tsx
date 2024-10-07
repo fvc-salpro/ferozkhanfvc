@@ -62,9 +62,8 @@ const VideoReviews = ({ slice }: VideoReviewsProps): JSX.Element => {
             >
               {slice.primary.reviews.map((review, index) => {
                 return (
-                  <div className="max-w-[380px] max-h-[280px] w-full h-full">
+                  <div key={index} className="max-w-[380px] max-h-[280px] w-full h-full">
                     <iframe
-                      key={index}
                       width="380"
                       height="280"
                       src={review.review_link}

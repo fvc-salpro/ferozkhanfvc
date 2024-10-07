@@ -1,9 +1,9 @@
 import nodemailer from 'nodemailer';
 
 export const sendNotificationEmail = async (
-    to: string,
+    to: string[],
     subject: string,
-    text: string,
+    html: string,
     attachments: { filename: string; content: Buffer }[]
 ) => {
     const transporter = nodemailer.createTransport({
@@ -18,9 +18,9 @@ export const sendNotificationEmail = async (
 
     const mailOptions = {
         from: process.env.SMTP_USER,
-        to,
+        to: to.join(', '),
         subject,
-        text,
+        html,
         attachments,
     };
 

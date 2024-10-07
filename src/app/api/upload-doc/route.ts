@@ -13,7 +13,14 @@ export async function POST(req: NextRequest) {
         }
 
         const formData = await req.formData();
-        const userName = formData.get('userName')?.toString();
+        const firstName = formData.get('firstName') as string;
+        const lastName = formData.get('lastName') as string;
+        const country = formData.get('country') as string;
+        const visaType = formData.get('visaType') as string;
+        const userEmail = formData.get('email') as string;
+        const phoneNumber = formData.get('phoneNumber') as string;
+
+        const userName = `${firstName} ${lastName}`;
 
         if (!userName) {
             return NextResponse.json(
@@ -47,18 +54,86 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        const uploadedFileIds = await Promise.all(
+        await Promise.all(
             files.map(file => uploadFileToGoogleDrive(file, userFolderId))
         );
 
-        const emailText = `A new document has been uploaded by ${userName} for visa processing. Document IDs: ${uploadedFileIds.join(', ')}.`;
+        const emailHtml = `
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Visa Application Notification</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            margin: 0;
+                            padding: 0;
+                            background-color: #f8f9fa;
+                        }
+                        .container {
+                            max-width: 600px;
+                            margin: 20px auto;
+                            background-color: #ffffff;
+                            border-radius: 8px;
+                            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                            overflow: hidden;
+                        }
+                        .header {
+                            background-color: #007bff;
+                            color: white;
+                            padding: 20px;
+                            text-align: center;
+                        }
+                        .content {
+                            padding: 20px;
+                            line-height: 1.6;
+                        }
+                        .footer {
+                            background-color: #f1f1f1;
+                            text-align: center;
+                            padding: 10px;
+                            font-size: 0.9em;
+                            color: #555;
+                        }
+                        .important {
+                            font-weight: bold;
+                            color: #007bff;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="header">
+                            <h2>New Visa Application Submission</h2>
+                        </div>
+                        <div class="content">
+                            <p>Dear Team,</p>
+                            <p>A new application has been submitted for a visa. Below are the details:</p>
+                            <p><span class="important">Visa Type:</span> ${visaType}</p>
+                            <p><span class="important">Country:</span> ${country}</p>
+                            <p><span class="important">Full Name:</span> ${userName}</p>
+                            <p><span class="important">Email:</span> ${userEmail}</p>
+                            <p><span class="important">Phone Number:</span> ${phoneNumber}</p>
+                            <p>Please review the attached documents for further details.</p>
+                        </div>
+                        <div class="footer">
+                            <p>Thank you,</p>
+                            <p>Your Visa Application Team</p>
+                        </div>
+                    </div>
+                </body>
+                </html>
+        `;
 
         await sendNotificationEmail(
-            process.env.OWNER_EMAIL!,
-            'New Document Submission for Visa Processing',
-            emailText,
+            [userEmail, process.env.OWNER_EMAIL!],
+            `Document Submission for Visa: ${visaType} Country: ${country} By: ${userName}`,
+            emailHtml,
             files.map(file => ({ filename: file.originalname, content: file.buffer }))
         );
+
 
         return NextResponse.json({ message: 'Files uploaded and email sent successfully.' }, { status: 200 });
     } catch (error: any) {

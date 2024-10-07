@@ -127,12 +127,14 @@ export async function POST(req: NextRequest) {
                 </html>
         `;
 
-        await sendNotificationEmail(
-            [userEmail, process.env.OWNER_EMAIL!],
-            `Document Submission for Visa: ${visaType} Country: ${country} By: ${userName}`,
-            emailHtml,
-            files.map(file => ({ filename: file.originalname, content: file.buffer }))
-        );
+        try {
+            await sendNotificationEmail(
+                [userEmail, process.env.OWNER_EMAIL!],
+                `Document Submission for Visa: ${visaType} Country: ${country} By: ${userName}`,
+                emailHtml,
+                files.map(file => ({ filename: file.originalname, content: file.buffer }))
+            );
+        } catch (ex: any) {}
 
 
         return NextResponse.json({ message: 'Files uploaded and email sent successfully.' }, { status: 200 });

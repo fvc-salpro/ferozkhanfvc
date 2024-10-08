@@ -18,6 +18,15 @@
             "label": "Header",
             "placeholder": ""
           }
+        },
+        "form_instructions": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Form Instructions",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,hyperlink,em,strong,o-list-item,list-item,heading6,heading5"
+          }
         }
       },
       "items": {}

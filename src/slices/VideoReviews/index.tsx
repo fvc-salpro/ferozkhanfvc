@@ -41,7 +41,7 @@ const VideoReviews = ({ slice }: VideoReviewsProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <Bounded as="div" className="bg-white md:px-[32px] px-[24px]">
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center gap-[30px]">
           <div className="flex flex-col justify-center items-center text-center max-w-[950px]">
             <PrismicRichText field={slice.primary.heading} />
             <div className="max-w-full md:max-w-[780px]">
@@ -59,10 +59,14 @@ const VideoReviews = ({ slice }: VideoReviewsProps): JSX.Element => {
               autoPlaySpeed={5000}
               keyBoardControl={true}
               transitionDuration={500}
+              arrows={false}
             >
               {slice.primary.reviews.map((review, index) => {
                 return (
-                  <div key={index} className="max-w-[380px] max-h-[280px] w-full h-full">
+                  <div
+                    key={index}
+                    className="max-w-[380px] max-h-[280px] w-full h-full"
+                  >
                     <iframe
                       width="380"
                       height="280"

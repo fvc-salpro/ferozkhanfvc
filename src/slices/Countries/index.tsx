@@ -61,7 +61,7 @@ const Countries = async ({ slice }: CountriesProps): Promise<JSX.Element> => {
               {countries.map((country, index) => {
                 return (
                   <div
-                    className="group gap-[12px] flex relative flex-col lg:text-start text-center lg:items-start items-center md:min-w-[280px]"
+                    className="group gap-[6px] flex relative flex-col lg:text-start text-center lg:items-start items-center md:min-w-[280px] md:max-h-[390px]"
                     key={index}
                   >
                     <PrismicNextImage

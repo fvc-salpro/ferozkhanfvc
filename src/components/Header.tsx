@@ -45,7 +45,7 @@ export default async function Header() {
               return (
                 <li
                   key={asText(item.label)}
-                  className="font-normal text-b16  tracking-tight text-gray-primary duration-500 ease-in-out hover:text-secondary"
+                  className="font-normal text-b14 tracking-tight text-gray-primary duration-500 ease-in-out hover:text-secondary"
                 >
                   <PrismicNextLink
                     className="py-[10px] px-[12px]"

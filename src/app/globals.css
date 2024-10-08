@@ -9,3 +9,13 @@ html {
 h1, h2, h3, h4, h5, h6 {
     @apply tracking-tighter
 }
+
+.react-multi-carousel-dot button {
+    border: none !important;
+    background: #FAE6C0 !important;
+}
+
+.react-multi-carousel-dot--active button {
+    border: none !important;
+    background: #E9B434 !important;
+}

@@ -32,6 +32,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "text": {
+              "type": "SharedSlice"
+            },
+            "icon_cards": {
+              "type": "SharedSlice"
+            },
             "faqs": {
               "type": "SharedSlice"
             },

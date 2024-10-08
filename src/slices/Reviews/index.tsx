@@ -44,7 +44,7 @@ const Reviews = ({ slice }: ReviewsProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-primary-light"
+      className="bg-[#FEFBF5]"
     >
       <Bounded as="div" yPadding="base" className="md:px-[32px] px-[24px]">
         <div className="flex flex-col justify-center items-center">
@@ -55,7 +55,7 @@ const Reviews = ({ slice }: ReviewsProps): JSX.Element => {
           </div>
 
           {reviews.length > 0 && (
-            <div className="mt-[30px] w-full">
+            <div className="mt-[30px] w-full relative min-h-[230px]">
               <Carousel
                 responsive={responsive}
                 infinite={true}
@@ -66,6 +66,8 @@ const Reviews = ({ slice }: ReviewsProps): JSX.Element => {
                 autoPlaySpeed={5000}
                 keyBoardControl={true}
                 transitionDuration={500}
+                arrows={false}
+                renderDotsOutside
               >
                 {reviews.map((review, index) => (
                   <div

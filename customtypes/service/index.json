@@ -49,6 +49,18 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "process": {
+              "type": "SharedSlice"
+            },
+            "services": {
+              "type": "SharedSlice"
+            },
+            "icon_cards": {
+              "type": "SharedSlice"
+            },
+            "counters": {
+              "type": "SharedSlice"
+            },
             "apply_form": {
               "type": "SharedSlice"
             },

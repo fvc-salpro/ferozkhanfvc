@@ -4,7 +4,7 @@ import {
   type JSXMapSerializer,
   type SliceComponentProps,
 } from "@prismicio/react";
-import { PrismicNextImage } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 
 import { Bounded } from "@/components/Bounded";
 import ButtonLink from "@/components/ButtonLink";
@@ -20,6 +20,33 @@ const headerComponents: JSXMapSerializer = {
   ),
   paragraph: ({ children }) => (
     <p className="text-b16 m-0 text-gray-primary">{children}</p>
+  ),
+  oList: ({ children }) => (
+    <ol className="mb-7 pl-4 last:mb-0 md:pl-6">{children}</ol>
+  ),
+  oListItem: ({ children }) => (
+    <li className="mb-1 list-decimal pl-1 last:mb-0 md:pl-2 text-gray-primary">
+      {children}
+    </li>
+  ),
+  list: ({ children }) => (
+    <ul className="mb-7 pl-4 last:mb-0 md:pl-6">{children}</ul>
+  ),
+  listItem: ({ children }) => (
+    <li className="mb-1 list-disc pl-1 last:mb-0 md:pl-2 text-gray-primary">
+      {children}
+    </li>
+  ),
+  strong: ({ children }) => (
+    <strong className="font-semibold">{children}</strong>
+  ),
+  hyperlink: ({ children, node }) => (
+    <PrismicNextLink
+      field={node.data}
+      className="underline decoration-1 underline-offset-2"
+    >
+      {children}
+    </PrismicNextLink>
   ),
 };
 

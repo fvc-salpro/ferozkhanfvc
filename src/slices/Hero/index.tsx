@@ -77,7 +77,11 @@ const Hero = ({ slice }: HeroProps) => {
               slice.primary.buttons.map((button, index) => {
                 return (
                   <ButtonLink
-                    type={button.button_type === "secondary" ? "secondary" : "primary"}
+                    type={
+                      button.button_type === "secondary"
+                        ? "secondary"
+                        : "primary"
+                    }
                     key={index}
                     field={button.button_link}
                   >
@@ -93,7 +97,7 @@ const Hero = ({ slice }: HeroProps) => {
                 alt=""
                 width={940}
                 height={440}
-                className="pointer-events-none z-[2] lg:-translate-y-[46px] rounded-[12px] select-none object-cover object-center max-w-[940px] max-h-[440px] h-full w-full"
+                className="pointer-events-none z-[2] lg:-translate-y-[46px] rounded-[12px] select-none object-cover object-center max-w-[360px] md:max-w-[940px] md:max-h-[440px] max-h-[360px] md:h-full h-[360px] w-full"
               />
             )}
             <Image

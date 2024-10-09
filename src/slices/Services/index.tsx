@@ -30,6 +30,7 @@ const Services = async ({ slice }: ServicesProps): Promise<JSX.Element> => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      id="services-list"
     >
       <Bounded as="div" className="bg-white md:px-[32px] px-[24px]">
         <div className="flex flex-col justify-center items-center">

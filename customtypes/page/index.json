@@ -35,6 +35,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "images_carousel": {
+              "type": "SharedSlice"
+            },
+            "hero_alternative": {
+              "type": "SharedSlice"
+            },
             "process": {
               "type": "SharedSlice"
             },

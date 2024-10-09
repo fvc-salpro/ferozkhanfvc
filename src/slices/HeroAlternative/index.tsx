@@ -68,6 +68,7 @@ const HeroAlternative = ({ slice }: HeroAlternativeProps): JSX.Element => {
                 {buttons.map((button, index) => (
                   <ButtonLink
                     field={button.button_link}
+                    key={index}
                     type={
                       button.button_type === "secondary"
                         ? "secondary"
@@ -99,7 +100,7 @@ const HeroAlternative = ({ slice }: HeroAlternativeProps): JSX.Element => {
                 height={300}
                 alt="Call to action background shapes"
               /> */}
-              <HeroShapes/>
+              <HeroShapes />
             </div>
           </div>
         </div>

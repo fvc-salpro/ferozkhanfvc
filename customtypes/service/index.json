@@ -44,11 +44,47 @@
           "thumbnails": []
         }
       },
+      "buttons": {
+        "type": "Group",
+        "config": {
+          "label": "Buttons",
+          "repeat": true,
+          "fields": {
+            "button_text": {
+              "type": "Text",
+              "config": {
+                "label": "Button Text",
+                "placeholder": ""
+              }
+            },
+            "button_link": {
+              "type": "Link",
+              "config": {
+                "label": "Button Link",
+                "placeholder": "",
+                "allowTargetBlank": false,
+                "select": null
+              }
+            },
+            "button_type": {
+              "type": "Select",
+              "config": {
+                "label": "Button Type",
+                "placeholder": "",
+                "options": ["primary", "secondary"]
+              }
+            }
+          }
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "text": {
+              "type": "SharedSlice"
+            },
             "hero_alternative": {
               "type": "SharedSlice"
             },

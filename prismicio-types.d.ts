@@ -100,6 +100,217 @@ export type CountryDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *Footer → Quick Links*
+ */
+export interface FooterDocumentDataQuickLinksItem {
+  /**
+   * Link Text field in *Footer → Quick Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.quick_links[].link_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_text: prismic.KeyTextField;
+
+  /**
+   * link field in *Footer → Quick Links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.quick_links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Item in *Footer → Services*
+ */
+export interface FooterDocumentDataServicesItem {
+  /**
+   * Link Text field in *Footer → Services*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.services[].link_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_text: prismic.KeyTextField;
+
+  /**
+   * link field in *Footer → Services*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.services[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Item in *Footer → Top Countries*
+ */
+export interface FooterDocumentDataTopCountriesItem {
+  /**
+   * Link Text field in *Footer → Top Countries*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.top_countries[].link_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_text: prismic.KeyTextField;
+
+  /**
+   * Link field in *Footer → Top Countries*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.top_countries[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Item in *Footer → Contact us*
+ */
+export interface FooterDocumentDataContactUsItem {
+  /**
+   * Link Text field in *Footer → Contact us*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.contact_us[].link_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link_text: prismic.KeyTextField;
+
+  /**
+   * Link field in *Footer → Contact us*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.contact_us[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+  /**
+   * Heading One field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.heading_one
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_one: prismic.KeyTextField;
+
+  /**
+   * Quick Links field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.quick_links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  quick_links: prismic.GroupField<Simplify<FooterDocumentDataQuickLinksItem>>;
+
+  /**
+   * Heading Two field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.heading_two
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_two: prismic.KeyTextField;
+
+  /**
+   * Services field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.services[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  services: prismic.GroupField<Simplify<FooterDocumentDataServicesItem>>;
+
+  /**
+   * Heading Three field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.heading_three
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_three: prismic.KeyTextField;
+
+  /**
+   * Top Countries field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.top_countries[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  top_countries: prismic.GroupField<
+    Simplify<FooterDocumentDataTopCountriesItem>
+  >;
+
+  /**
+   * Heading Four field in *Footer*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.heading_four
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading_four: prismic.KeyTextField;
+
+  /**
+   * Contact us field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.contact_us[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  contact_us: prismic.GroupField<Simplify<FooterDocumentDataContactUsItem>>;
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<FooterDocumentData>,
+    "footer",
+    Lang
+  >;
+
+/**
  * Item in *Navigation → Links*
  */
 export interface NavigationDocumentDataLinksItem {
@@ -270,7 +481,43 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
+/**
+ * Item in *Service → Buttons*
+ */
+export interface ServiceDocumentDataButtonsItem {
+  /**
+   * Button Text field in *Service → Buttons*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.buttons[].button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *Service → Buttons*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.buttons[].button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * Button Type field in *Service → Buttons*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.buttons[].button_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  button_type: prismic.SelectField<"primary" | "secondary">;
+}
+
 type ServiceDocumentDataSlicesSlice =
+  | TextSlice
   | HeroAlternativeSlice
   | ProcessSlice
   | ServicesSlice
@@ -330,6 +577,17 @@ interface ServiceDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   service_banner: prismic.ImageField<never>;
+
+  /**
+   * Buttons field in *Service*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.buttons[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  buttons: prismic.GroupField<Simplify<ServiceDocumentDataButtonsItem>>;
 
   /**
    * Slice Zone field in *Service*
@@ -471,6 +729,7 @@ export type SettingsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | CountryDocument
+  | FooterDocument
   | NavigationDocument
   | PageDocument
   | ServiceDocument
@@ -2294,6 +2553,12 @@ declare module "@prismicio/client" {
       CountryDocument,
       CountryDocumentData,
       CountryDocumentDataSlicesSlice,
+      FooterDocument,
+      FooterDocumentData,
+      FooterDocumentDataQuickLinksItem,
+      FooterDocumentDataServicesItem,
+      FooterDocumentDataTopCountriesItem,
+      FooterDocumentDataContactUsItem,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataLinksItem,
@@ -2302,6 +2567,7 @@ declare module "@prismicio/client" {
       PageDocumentDataSlicesSlice,
       ServiceDocument,
       ServiceDocumentData,
+      ServiceDocumentDataButtonsItem,
       ServiceDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,

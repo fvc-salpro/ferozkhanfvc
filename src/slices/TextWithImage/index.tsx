@@ -61,7 +61,7 @@ const TextWithImage = ({ slice }: TextWithImageProps) => {
     >
       <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 lg:text-start text-center">
         <div className="flex flex-col gap-[32px] justify-center items-center lg:justify-start lg:items-start">
-          <div className="flex flex-col gap-[12px]">
+          <div className="flex flex-col gap-[12px] text-balance">
             <PrismicRichText
               components={headerComponents}
               field={slice.primary.heading}

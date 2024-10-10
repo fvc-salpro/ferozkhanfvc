@@ -16,6 +16,7 @@ module.exports = {
         'primary-alt': '#F7E5B8',
         'primary-dark': '#CF9B16',
         'primary-light': '#FDFCF9',
+        'footer-bg': '#FEFBF5',
         'primary-light-alt': '#FAE6C0',
         secondary: '#F74C06',
         'secondary-light': '#FFF6F3',

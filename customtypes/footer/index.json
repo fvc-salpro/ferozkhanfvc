@@ -1,0 +1,139 @@
+{
+  "format": "custom",
+  "id": "footer",
+  "label": "Footer",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "heading_one": {
+        "type": "Text",
+        "config": {
+          "label": "Heading One",
+          "placeholder": ""
+        }
+      },
+      "quick_links": {
+        "type": "Group",
+        "config": {
+          "label": "Quick Links",
+          "repeat": true,
+          "fields": {
+            "link_text": {
+              "type": "Text",
+              "config": {
+                "label": "Link Text",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "link",
+                "placeholder": "",
+                "allowTargetBlank": false,
+                "select": null
+              }
+            }
+          }
+        }
+      },
+      "heading_two": {
+        "type": "Text",
+        "config": {
+          "label": "Heading Two",
+          "placeholder": ""
+        }
+      },
+      "services": {
+        "type": "Group",
+        "config": {
+          "label": "Services",
+          "repeat": true,
+          "fields": {
+            "link_text": {
+              "type": "Text",
+              "config": {
+                "label": "Link Text",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "link",
+                "placeholder": "",
+                "allowTargetBlank": false,
+                "select": null
+              }
+            }
+          }
+        }
+      },
+      "heading_three": {
+        "type": "Text",
+        "config": {
+          "label": "Heading Three",
+          "placeholder": ""
+        }
+      },
+      "top_countries": {
+        "type": "Group",
+        "config": {
+          "label": "Top Countries",
+          "repeat": true,
+          "fields": {
+            "link_text": {
+              "type": "Text",
+              "config": {
+                "label": "Link Text",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "allowTargetBlank": false,
+                "select": null
+              }
+            }
+          }
+        }
+      },
+      "heading_four": {
+        "type": "Text",
+        "config": {
+          "label": "Heading Four",
+          "placeholder": ""
+        }
+      },
+      "contact_us": {
+        "type": "Group",
+        "config": {
+          "label": "Contact us",
+          "repeat": true,
+          "fields": {
+            "link_text": {
+              "type": "Text",
+              "config": {
+                "label": "Link Text",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "allowTargetBlank": false,
+                "select": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

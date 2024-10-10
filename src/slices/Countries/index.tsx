@@ -57,7 +57,7 @@ const Countries = async ({ slice }: CountriesProps): Promise<JSX.Element> => {
             </div>
           </div>
           {countries && countries.length > 0 && (
-            <div className="mt-[30px] grid grid-cols-2 gap-[24px] items-center justify-center sm:grid-cols-2 md:flex md:flex-wrap">
+            <div className="mt-[30px] gap-[24px] items-center justify-center flex flex-wrap">
               {countries.map((country, index) => {
                 return (
                   <div
@@ -68,7 +68,7 @@ const Countries = async ({ slice }: CountriesProps): Promise<JSX.Element> => {
                       field={country.data.country_banner}
                       width={280}
                       height={330}
-                      className="object-cover object-center max-w-full md:max-w-[280px] max-h-[330px] rounded-[12px]"
+                      className="object-cover object-center max-w-full w-full md:max-w-[280px] md:max-h-[330px] max-h-[330px] rounded-[12px]"
                     />
                     <CustomLink
                       className="after:absolute after:inset-0 after:w-full after:h-full text-secondary group-hover:gap-[20px]"

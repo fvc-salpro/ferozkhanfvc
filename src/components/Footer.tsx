@@ -1,7 +1,6 @@
 import { createClient } from "@/prismicio";
 import { Bounded } from "./Bounded";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import Link from "next/link";
 
 export default async function Footer() {
   const client = createClient();

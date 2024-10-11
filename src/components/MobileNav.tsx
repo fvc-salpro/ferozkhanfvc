@@ -4,9 +4,11 @@ import { useState } from "react";
 import { createClient } from "@/prismicio";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicText } from "@prismicio/react";
-import { asText, Content } from "@prismicio/client";
+import { asLink, asText, Content } from "@prismicio/client";
 import ButtonLink from "./ButtonLink";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 type NavBarProps = {
   navigation: Content.NavigationDocument;
@@ -16,6 +18,7 @@ type NavBarProps = {
 export default function MobileNav({ navigation, settings }: NavBarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const socials = settings.data.socials;
+  const pathName = usePathname();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -43,6 +46,8 @@ export default function MobileNav({ navigation, settings }: NavBarProps) {
         className={`fixed right-0 w-full bg-white shadow-xl overflow-hidden transition-all ease-in-out duration-700 mt-[12px] ${isOpen ? "max-h-[1080px] p-[24px] transition-all ease-in-out duration-700" : "max-h-0 transition-all ease-in-out duration-700"}`}
       >
         {navigation.data?.links.map((item) => {
+          const isActive = pathName === (asLink(item.link) as string)
+
           if (item.cta) {
             return (
               <li
@@ -64,7 +69,7 @@ export default function MobileNav({ navigation, settings }: NavBarProps) {
                 }, 500);
               }}
               key={asText(item.label)}
-              className="font-normal text-b14 tracking-tight text-gray-primary duration-500 ease-in-out hover:text-secondary"
+              className={clsx("font-normal text-b14 tracking-tigh duration-500 ease-in-out hover:text-secondary", isActive ? "text-secondary" : "text-gray-primary")}
             >
               <PrismicNextLink
                 className="py-[10px] px-[12px] flex"

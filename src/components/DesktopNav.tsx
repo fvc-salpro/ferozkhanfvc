@@ -2,12 +2,13 @@
 
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicText } from "@prismicio/react";
-import { asText, Content } from "@prismicio/client";
+import { asLink, asText, Content } from "@prismicio/client";
 import ButtonLink from "./ButtonLink";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 type NavBarProps = {
   navigation: Content.NavigationDocument;
@@ -17,12 +18,17 @@ type NavBarProps = {
 export default function DesktopNav({ navigation, settings }: NavBarProps) {
   const socials = settings.data.socials;
   const [isOpen, setIsOpen] = useState<Boolean>(true);
+  const pathName = usePathname();
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsOpen(false)
-    }, 5000);
-  }, [])
+    const handleScroll = () => {
+      if (window.scrollY > 350) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -64,6 +70,7 @@ export default function DesktopNav({ navigation, settings }: NavBarProps) {
       <nav>
         <ul className="flex flex-wrap gap-0 items-center md:gap-0">
           {navigation.data?.links.map((item) => {
+            const isActive = pathName === (asLink(item.link) as string)
             if (item.cta) {
               return (
                 <li
@@ -79,7 +86,7 @@ export default function DesktopNav({ navigation, settings }: NavBarProps) {
             return (
               <li
                 key={asText(item.label)}
-                className="font-normal text-b14 tracking-tight text-gray-primary duration-500 ease-in-out hover:text-secondary"
+                className={clsx("font-normal text-b14 tracking-tight duration-500 ease-in-out hover:text-secondary", isActive ? "text-secondary" : "text-gray-primary")}
               >
                 <PrismicNextLink
                   className="py-[10px] px-[12px]"

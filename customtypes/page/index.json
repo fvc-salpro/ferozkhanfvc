@@ -35,6 +35,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "google_map": {
+              "type": "SharedSlice"
+            },
             "images_carousel": {
               "type": "SharedSlice"
             },

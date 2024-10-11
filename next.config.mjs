@@ -1,6 +1,19 @@
 /** @ts-nocheck */
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    async headers() {
+        return [
+            {
+                source: "/(.*)",
+                headers: [
+                    {
+                        key: "Content-Security-Policy",
+                        value: "frame-src https://www.youtube.com https://www.youtube-nocookie.com;"
+                    }
+                ]
+            }
+        ]
+    },
     typescript: {
         // !! WARN !!
         // Dangerously allow production builds to successfully complete even if

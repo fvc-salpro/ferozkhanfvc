@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"google_map_url": {
+				"__TYPE__": "FieldContent",
+				"value": "drew",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

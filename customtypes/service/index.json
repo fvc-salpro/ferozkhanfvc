@@ -82,6 +82,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "wrapper": {
+              "type": "SharedSlice"
+            },
             "text": {
               "type": "SharedSlice"
             },

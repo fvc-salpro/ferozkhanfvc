@@ -9,6 +9,7 @@ export const components = {
   counters: dynamic(() => import("./Counters")),
   countries: dynamic(() => import("./Countries")),
   faqs: dynamic(() => import("./Faqs")),
+  google_map: dynamic(() => import("./GoogleMap")),
   hero: dynamic(() => import("./Hero")),
   hero_alternative: dynamic(() => import("./HeroAlternative")),
   icon_cards: dynamic(() => import("./IconCards")),
@@ -23,4 +24,5 @@ export const components = {
   text_with_image: dynamic(() => import("./TextWithImage")),
   video_reviews: dynamic(() => import("./VideoReviews")),
   why_us: dynamic(() => import("./WhyUs")),
+  wrapper: dynamic(() => import("./Wrapper")),
 };

@@ -379,6 +379,7 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | GoogleMapSlice
   | ImagesCarouselSlice
   | HeroAlternativeSlice
   | ProcessSlice
@@ -517,6 +518,7 @@ export interface ServiceDocumentDataButtonsItem {
 }
 
 type ServiceDocumentDataSlicesSlice =
+  | WrapperSlice
   | TextSlice
   | HeroAlternativeSlice
   | ProcessSlice
@@ -1224,6 +1226,51 @@ type FaqsSliceVariation = FaqsSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type FaqsSlice = prismic.SharedSlice<"faqs", FaqsSliceVariation>;
+
+/**
+ * Primary content in *GoogleMap → Default → Primary*
+ */
+export interface GoogleMapSliceDefaultPrimary {
+  /**
+   * Google Map URL field in *GoogleMap → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: google_map.default.primary.google_map_url
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  google_map_url: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for GoogleMap Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GoogleMapSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GoogleMapSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *GoogleMap*
+ */
+type GoogleMapSliceVariation = GoogleMapSliceDefault;
+
+/**
+ * GoogleMap Shared Slice
+ *
+ * - **API ID**: `google_map`
+ * - **Description**: GoogleMap
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GoogleMapSlice = prismic.SharedSlice<
+  "google_map",
+  GoogleMapSliceVariation
+>;
 
 /**
  * Item in *Hero → Default → Primary → Buttons*
@@ -2529,6 +2576,106 @@ type WhyUsSliceVariation = WhyUsSliceDefault;
  */
 export type WhyUsSlice = prismic.SharedSlice<"why_us", WhyUsSliceVariation>;
 
+/**
+ * Item in *Wrapper → Default → Primary → Country*
+ */
+export interface WrapperSliceDefaultPrimaryCountryItem {
+  /**
+   * Title field in *Wrapper → Default → Primary → Country*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wrapper.default.primary.country[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *Wrapper → Default → Primary → Country*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wrapper.default.primary.country[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Link field in *Wrapper → Default → Primary → Country*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Youtube Video URL
+   * - **API ID Path**: wrapper.default.primary.country[].link
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Wrapper → Default → Primary*
+ */
+export interface WrapperSliceDefaultPrimary {
+  /**
+   * Heading field in *Wrapper → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wrapper.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Text field in *Wrapper → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wrapper.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * Country field in *Wrapper → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: wrapper.default.primary.country[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  country: prismic.GroupField<Simplify<WrapperSliceDefaultPrimaryCountryItem>>;
+}
+
+/**
+ * Default variation for Wrapper Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WrapperSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<WrapperSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Wrapper*
+ */
+type WrapperSliceVariation = WrapperSliceDefault;
+
+/**
+ * Wrapper Shared Slice
+ *
+ * - **API ID**: `wrapper`
+ * - **Description**: Wrapper
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WrapperSlice = prismic.SharedSlice<
+  "wrapper",
+  WrapperSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -2599,6 +2746,10 @@ declare module "@prismicio/client" {
       FaqsSliceDefaultPrimary,
       FaqsSliceVariation,
       FaqsSliceDefault,
+      GoogleMapSlice,
+      GoogleMapSliceDefaultPrimary,
+      GoogleMapSliceVariation,
+      GoogleMapSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimaryButtonsItem,
       HeroSliceDefaultPrimary,
@@ -2670,6 +2821,11 @@ declare module "@prismicio/client" {
       WhyUsSliceDefaultPrimary,
       WhyUsSliceVariation,
       WhyUsSliceDefault,
+      WrapperSlice,
+      WrapperSliceDefaultPrimaryCountryItem,
+      WrapperSliceDefaultPrimary,
+      WrapperSliceVariation,
+      WrapperSliceDefault,
     };
   }
 }

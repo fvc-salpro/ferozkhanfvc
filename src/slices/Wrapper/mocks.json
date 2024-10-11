@@ -1,0 +1,71 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Planet"
+						}
+					}
+				]
+			},
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Est consectetur nostrud consectetur quis. Ipsum ea tempor enim excepteur tempor consectetur sit cupidatat cupidatat minim."
+						}
+					}
+				]
+			},
+			"country": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "golden",
+									"type": "Text"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Do laborum sit ad consectetur ex id enim esse quis mollit non."
+											}
+										}
+									]
+								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "eat",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

@@ -54,7 +54,7 @@ export default async function Page({ params }: { params: Params }) {
                 height={54}
                 className="object-contain object-center max-w-[54px] max-h-[54px]"
               />
-              <h1 className="bg-gradient-to-b from-primary to-secondary bg-clip-text not-italic text-transparent">
+              <h1 className="text-h1-m md:text-h1 bg-gradient-to-b from-primary to-secondary bg-clip-text not-italic text-transparent">
                 {page.data.heading}
               </h1>
               <PrismicRichText

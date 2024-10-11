@@ -1,0 +1,26 @@
+{
+  "id": "google_map",
+  "type": "SharedSlice",
+  "name": "GoogleMap",
+  "description": "GoogleMap",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "google_map_url": {
+          "type": "Text",
+          "config": {
+            "label": "Google Map URL",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

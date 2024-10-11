@@ -5,6 +5,9 @@ import { PrismicText } from "@prismicio/react";
 import { asText, Content } from "@prismicio/client";
 import ButtonLink from "./ButtonLink";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import clsx from "clsx";
+import Image from "next/image";
 
 type NavBarProps = {
   navigation: Content.NavigationDocument;
@@ -13,15 +16,41 @@ type NavBarProps = {
 
 export default function DesktopNav({ navigation, settings }: NavBarProps) {
   const socials = settings.data.socials;
+  const [isOpen, setIsOpen] = useState<Boolean>(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsOpen(false)
+    }, 5000);
+  }, [])
 
   return (
     <>
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="fixed bottom-6 right-8 rounded-full hover:shadow-lg text-white hover:shadow-primary-dark transition ease-in-out duration-500"
+        aria-label="Toggle Social Links"
+      >
+        <Image
+          width={32}
+          height={32}
+          alt="Fast Mark Icon"
+          src="/fast-logo-mark.svg"
+        />
+      </button>
+
       {socials && socials.length > 0 && (
-        <div className="flex flex-col gap-[10px] bg-gradient-to-r from-primary to-primary-dark fixed left-0 py-[8px] px-[10px] top-[20%] rounded-[8px]">
+        <div
+          className={clsx(
+            "overflow-hidden transition-all ease-in-out duration-700 flex flex-col gap-[10px] bg-gradient-to-r from-primary to-primary-dark fixed bottom-[70px] right-6 rounded-[8px] shadow-lg",
+            isOpen
+              ? "max-h-[500px] py-[8px] px-[10px] opacity-100"
+              : "max-h-0 py-[8px] px-[10px] opacity-0"
+          )}
+        >
           {socials.map((social, index) => (
             <Link
-              className="rounded-[8px] duration-300 ease-in-out transition-all hover:bg-[#ffffff15] backdrop-blur-sm hover:shadow-sm 
-              shadow-black/5"
+              className="rounded-[8px] duration-300 ease-in-out transition-all hover:bg-[#ffffff15] backdrop-blur-sm hover:shadow-sm shadow-black/5"
               key={index}
               href={social.link}
               target="_blank"

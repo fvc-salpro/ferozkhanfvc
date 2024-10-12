@@ -379,6 +379,7 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | BookConsultationSlice
   | ImagesCarouselSlice
   | HeroAlternativeSlice
   | ProcessSlice
@@ -923,6 +924,61 @@ type ApplyFormSliceVariation = ApplyFormSliceDefault;
 export type ApplyFormSlice = prismic.SharedSlice<
   "apply_form",
   ApplyFormSliceVariation
+>;
+
+/**
+ * Primary content in *BookConsultation → Default → Primary*
+ */
+export interface BookConsultationSliceDefaultPrimary {
+  /**
+   * Heading field in *BookConsultation → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: book_consultation.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Text field in *BookConsultation → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: book_consultation.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for BookConsultation Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BookConsultationSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BookConsultationSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *BookConsultation*
+ */
+type BookConsultationSliceVariation = BookConsultationSliceDefault;
+
+/**
+ * BookConsultation Shared Slice
+ *
+ * - **API ID**: `book_consultation`
+ * - **Description**: BookConsultation
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BookConsultationSlice = prismic.SharedSlice<
+  "book_consultation",
+  BookConsultationSliceVariation
 >;
 
 /**
@@ -2581,6 +2637,10 @@ declare module "@prismicio/client" {
       ApplyFormSliceDefaultPrimary,
       ApplyFormSliceVariation,
       ApplyFormSliceDefault,
+      BookConsultationSlice,
+      BookConsultationSliceDefaultPrimary,
+      BookConsultationSliceVariation,
+      BookConsultationSliceDefault,
       CallToActionSlice,
       CallToActionSliceDefaultPrimary,
       CallToActionSliceVariation,

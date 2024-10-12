@@ -66,72 +66,137 @@ export async function POST(req: NextRequest) {
         );
 
         const emailHtml = `
-                <!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Visa Application Notification</title>
-                    <style>
-                        body {
-                            font-family: Arial, sans-serif;
-                            margin: 0;
-                            padding: 0;
-                            background-color: #f8f9fa;
-                        }
-                        .container {
-                            max-width: 600px;
-                            margin: 20px auto;
-                            background-color: #ffffff;
-                            border-radius: 8px;
-                            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                            overflow: hidden;
-                        }
-                        .header {
-                            background-color: #007bff;
-                            color: white;
-                            padding: 20px;
-                            text-align: center;
-                        }
-                        .content {
-                            padding: 20px;
-                            line-height: 1.6;
-                        }
-                        .footer {
-                            background-color: #f1f1f1;
-                            text-align: center;
-                            padding: 10px;
-                            font-size: 0.9em;
-                            color: #555;
-                        }
-                        .important {
-                            font-weight: bold;
-                            color: #007bff;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <div class="container">
-                        <div class="header">
-                            <h2>New Visa Application Submission</h2>
-                        </div>
-                        <div class="content">
-                            <p>Dear Team,</p>
-                            <p>A new application has been submitted for a visa. Below are the details:</p>
-                            <p><span class="important">Visa Type:</span> ${visaType}</p>
-                            <p><span class="important">Country:</span> ${country}</p>
-                            <p><span class="important">Full Name:</span> ${userName}</p>
-                            <p><span class="important">Email:</span> ${userEmail}</p>
-                            <p><span class="important">Phone Number:</span> ${phoneNumber}</p>
-                            <p>Please review the attached documents for further details.</p>
-                        </div>
-                        <div class="footer">
-                            <p>Thank you,</p>
-                            <p>Your Visa Application Team</p>
-                        </div>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title>Visa Application Notification</title>
+            <style>
+                body {
+                    font-family: 'Montserrat', sans-serif;
+                    background-color: #FDFCF9; /* primary-light */
+                    color: #272424; /* dark-primary */
+                    margin: 0;
+                    padding: 0;
+                }
+                .container {
+                    max-width: 600px;
+                    margin: 40px auto;
+                    background-color: #ffffff;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+                    border: 1px solid #FAE6C0; /* primary-light-alt */
+                }
+                .header {
+                    background-color: #E9B434; /* primary */
+                    color: white;
+                    text-align: center;
+                    padding: 40px 20px;
+                }
+                .header h1 {
+                    font-size: 52px;
+                    line-height: 120%;
+                    font-weight: 700;
+                    margin: 0;
+                    letter-spacing: -1px;
+                }
+                .content {
+                    padding: 40px 30px;
+                    background-color: #FEFBF5; /* footer-bg */
+                    color: #272424; /* dark-primary */
+                    font-size: 16px;
+                    line-height: 150%;
+                    text-align: left;
+                }
+                .content p {
+                    margin-bottom: 20px;
+                }
+                .content .important {
+                    font-weight: bold;
+                    color: #F74C06; /* secondary */
+                }
+                .details {
+                    background-color: #FAE6C0; /* primary-light-alt */
+                    padding: 20px;
+                    border-radius: 10px;
+                    border: 1px solid #F7E5B8; /* primary-alt */
+                    margin-bottom: 30px;
+                }
+                .details p {
+                    margin: 8px 0;
+                    font-size: 16px;
+                    line-height: 1.6;
+                }
+                .details p span {
+                    font-weight: 600;
+                    color: #CF9B16; /* primary-dark */
+                }
+                .footer {
+                    text-align: center;
+                    background-color: #FFF6F3; /* secondary-light */
+                    padding: 30px 20px;
+                    color: #272424; /* dark-primary */
+                    font-size: 14px;
+                    line-height: 130%;
+                }
+                .footer p {
+                    margin: 5px 0;
+                }
+                .footer .signature {
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: #272424;
+                }
+                .footer a {
+                    color: #E9B434; /* primary */
+                    text-decoration: none;
+                    font-weight: 600;
+                }
+                /* Mobile responsiveness */
+                @media (max-width: 640px) {
+                    .header h1 {
+                        font-size: 36px;
+                    }
+                    .content {
+                        padding: 30px 20px;
+                    }
+                    .footer {
+                        padding: 20px;
+                    }
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <!-- Email Header -->
+                <div class="header">
+                    <h1>Visa Application</h1>
+                </div>
+                <!-- Email Content -->
+                <div class="content">
+                    <p>Dear Team,</p>
+                    <p>We have received a new visa application with the following details:</p>
+                    <div class="details">
+                        <p><span>Visa Type:</span> ${visaType}</p>
+                        <p><span>Country:</span> ${country}</p>
+                        <p><span>Full Name:</span> ${userName}</p>
+                        <p><span>Email:</span> ${userEmail}</p>
+                        <p><span>Phone Number:</span> ${phoneNumber}</p>
                     </div>
-                </body>
-                </html>
+                    <p>Please review the attached documents for further details. We appreciate your prompt attention to this matter.</p>
+                </div>
+                <!-- Email Footer -->
+                <div class="footer">
+                    <p class="signature">Best regards,</p>
+                    <p><strong>Visa Processing Team</strong></p>
+                    <p>&copy; 2024 <a href="https://www.ferozvisaconsultancy.com">Feroz Visa Consultancy</a>. All Rights Reserved.</p>
+                </div>
+            </div>
+        </body>
+        </html>
         `;
 
         try {

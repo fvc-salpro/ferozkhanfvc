@@ -32,6 +32,18 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "hero_alternative": {
+              "type": "SharedSlice"
+            },
+            "about_ceo": {
+              "type": "SharedSlice"
+            },
+            "text": {
+              "type": "SharedSlice"
+            },
+            "icon_cards": {
+              "type": "SharedSlice"
+            },
             "faqs": {
               "type": "SharedSlice"
             },

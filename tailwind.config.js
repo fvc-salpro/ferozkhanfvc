@@ -13,9 +13,13 @@ module.exports = {
       },
       colors: {
         primary: '#E9B434',
+        'primary-alt': '#F7E5B8',
         'primary-dark': '#CF9B16',
         'primary-light': '#FDFCF9',
+        'footer-bg': '#FEFBF5',
+        'primary-light-alt': '#FAE6C0',
         secondary: '#F74C06',
+        'secondary-light': '#FFF6F3',
         'dark-primary': '#272424',
         'gray-primary': '#7C7E7D',
       },
@@ -31,6 +35,7 @@ module.exports = {
         b14: ['14px', { lineHeight: '150%' }],
         caption: ['12px', { lineHeight: '120%' }],
 
+        'h1-xl': ['64px', { lineHeight: '120%', fontWeight: '700', letterSpacing: '-2%', }],
         'h1-m': ['36px', { lineHeight: '120%', fontWeight: '700' }],
         'h2-m': ['32px', { lineHeight: '120%', fontWeight: '700' }],
         'h3-m': ['28px', { lineHeight: '120%', fontWeight: '700' }],

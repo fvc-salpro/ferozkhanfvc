@@ -1,33 +1,35 @@
 "use client";
 
 import { Bounded } from "@/components/Bounded";
-import { SliceComponentProps } from "@prismicio/react";
+import {
+  JSXMapSerializer,
+  PrismicRichText,
+  SliceComponentProps,
+} from "@prismicio/react";
 import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import Image from "next/image";
-import Marquee from "react-fast-marquee";
-import { PrismicRichText } from "@/components/PrismicRichText";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 /**
- * Props for `Reviews`.
+ * Props for `ImagesCarousel`.
  */
-export type ReviewsProps = SliceComponentProps<Content.ReviewsSlice>;
+export type ImagesCarouselProps =
+  SliceComponentProps<Content.ImagesCarouselSlice>;
 
 /**
- * Component for "Reviews" Slices.
+ * Component for "ImagesCarousel" Slices.
  */
 
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3,
+    items: 4,
     slidesToSlide: 1,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 2,
+    items: 3,
     slidesToSlide: 1,
   },
   mobile: {
@@ -37,24 +39,44 @@ const responsive = {
   },
 };
 
-const Reviews = ({ slice }: ReviewsProps): JSX.Element => {
-  const reviews = slice.primary.reviews || [];
+const components: JSXMapSerializer = {
+  heading2: ({ children }) => (
+    <h2 className="text-h2-m md:text-h2 text-dark-primary mb-0 leading-[120%]">
+      {children}
+    </h2>
+  ),
+  paragraph: ({ children }) => (
+    <p className="text-b16 m-0 text-gray-primary">{children}</p>
+  ),
+};
+
+const ImagesCarousel = ({ slice }: ImagesCarouselProps): JSX.Element => {
+  const images = slice.primary.images;
 
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-[#FEFBF5]"
+      className="bg-white"
     >
       <Bounded as="div" yPadding="base" className="md:px-[32px] px-[24px]">
         <div className="flex flex-col justify-center items-center">
           <div className="flex flex-col justify-center items-center text-center max-w-[950px]">
             {slice.primary.heading && (
-              <PrismicRichText field={slice.primary.heading}></PrismicRichText>
+              <PrismicRichText
+                components={components}
+                field={slice.primary.heading}
+              ></PrismicRichText>
+            )}
+            {slice.primary.text && (
+              <PrismicRichText
+                components={components}
+                field={slice.primary.text}
+              ></PrismicRichText>
             )}
           </div>
 
-          {reviews.length > 0 && (
+          {images.length > 0 && (
             <div className="mt-[30px] w-full relative min-h-[230px]">
               <Carousel
                 responsive={responsive}
@@ -68,32 +90,23 @@ const Reviews = ({ slice }: ReviewsProps): JSX.Element => {
                 transitionDuration={500}
                 arrows={false}
                 renderDotsOutside
+                partialVisible={true}
+                partialVisbile={true}
+                itemClass="mx-[16px]"
               >
-                {reviews.map((review, index) => (
+                {images.map((image, index) => (
                   <div
-                    className="gap-[12px] flex relative flex-col text-center items-center mx-4 max-w-[370px]"
+                    className="flex relative flex-col text-center items-center max-w-[320px]"
                     key={index}
                   >
-                    {isFilled.image(review.image) ? (
+                    {isFilled.image(image.image) && (
                       <PrismicNextImage
-                        field={review.image}
-                        width={54}
-                        height={54}
-                        className="object-cover object-center max-w-[54px] max-h-[54px] rounded-full"
-                      />
-                    ) : (
-                      <Image
-                        src="/user.svg"
-                        alt={`Reviewer ${index}`}
-                        width={54}
-                        height={54}
-                        className="object-cover object-center max-w-[54px] max-h-[54px]"
+                        field={image.image}
+                        width={320}
+                        height={260}
+                        className="object-cover object-center max-w-[320px] max-h-[260px] rounded-[12px]"
                       />
                     )}
-                    <h6 className="text-h6-m text-dark-primary text-balance">
-                      {review.name || "Unknown Reviewer"}
-                    </h6>
-                    <PrismicRichText field={review.text}></PrismicRichText>
                   </div>
                 ))}
               </Carousel>
@@ -105,4 +118,4 @@ const Reviews = ({ slice }: ReviewsProps): JSX.Element => {
   );
 };
 
-export default Reviews;
+export default ImagesCarousel;

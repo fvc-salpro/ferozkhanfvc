@@ -7,6 +7,17 @@
 				"__TYPE__": "FieldContent",
 				"value": "till",
 				"type": "Text"
+			},
+			"form_instructions": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Aliquip veniam voluptate et minim qui est do eu."
+						}
+					}
+				]
 			}
 		},
 		"items": []

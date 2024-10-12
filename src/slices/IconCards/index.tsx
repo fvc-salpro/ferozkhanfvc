@@ -1,19 +1,16 @@
 import { Bounded } from "@/components/Bounded";
-import CustomLink from "@/components/CustomLink";
-import { PrismicRichText } from "@/components/PrismicRichText";
-import { createClient } from "@/prismicio";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { JSXMapSerializer, SliceComponentProps } from "@prismicio/react";
-import Image from "next/image";
+import { PrismicRichText } from "@/components/PrismicRichText";
 
 /**
- * Props for `Services`.
+ * Props for `IconCards`.
  */
-export type ServicesProps = SliceComponentProps<Content.ServicesSlice>;
+export type IconCardsProps = SliceComponentProps<Content.IconCardsSlice>;
 
 /**
- * Component for "Services" Slices.
+ * Component for "IconCards" Slices.
  */
 
 const components: JSXMapSerializer = {
@@ -22,51 +19,43 @@ const components: JSXMapSerializer = {
   ),
 };
 
-const Services = async ({ slice }: ServicesProps): Promise<JSX.Element> => {
-  const client = createClient();
-  const services = await client.getAllByType("service");
+const IconCards = ({ slice }: IconCardsProps): JSX.Element => {
+  const cards = slice.primary.cards;
 
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      id="services-list"
     >
       <Bounded as="div" className="bg-white md:px-[32px] px-[24px]">
         <div className="flex flex-col justify-center items-center">
           <div className="flex flex-col justify-center items-center text-center max-w-[950px]">
             <PrismicRichText field={slice.primary.heading} />
-            <div className="max-w-full md:max-w-[580px]">
+            <div className="max-w-full md:max-w-[580px] mt-[-18px]">
               <PrismicRichText field={slice.primary.text} />
             </div>
           </div>
-          {services && services.length > 0 && (
+          {cards && cards.length > 0 && (
             <div className="p-[30px] mt-[30px] rounded-[12px] bg-primary-light grid grid-cols-1 lg:grid-cols-3 gap-[24px]">
-              {services.map((service, index) => {
+              {cards.map((card, index) => {
                 return (
                   <div
-                    className="group gap-[12px] flex relative flex-col lg:text-start text-center lg:items-start items-center"
+                    className="group gap-[12px] flex relative flex-col lg:text-start text-center lg:items-start items-center pb-[12px]"
                     key={index}
                   >
                     <PrismicNextImage
-                      field={service.data.service_icon}
+                      field={card.icon}
                       width={54}
                       height={54}
                       className="object-contain object-center max-w-[54px] max-h-[54px]"
                     />
                     <h6 className="text-h6 text-dark-primary text-balance">
-                      {service.data.heading}
+                      {card.title}
                     </h6>
                     <PrismicRichText
                       components={components}
-                      field={service.data.description}
+                      field={card.text}
                     />
-                    <CustomLink
-                      className="after:absolute after:inset-0 after:w-full after:h-full text-secondary group-hover:gap-[20px]"
-                      href={`/services/${service.uid}`}
-                    >
-                      Learn More
-                    </CustomLink>
                     <div
                       className="absolute w-0 duration-500 ease-in-out group-hover:w-full bg-gradient-to-r from-secondary
                     to-primary h-[1px] bottom-0"
@@ -82,4 +71,4 @@ const Services = async ({ slice }: ServicesProps): Promise<JSX.Element> => {
   );
 };
 
-export default Services;
+export default IconCards;

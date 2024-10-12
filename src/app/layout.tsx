@@ -1,10 +1,12 @@
 import "./globals.css";
 
-import { Inter, Montserrat } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { PrismicPreview } from "@prismicio/next";
 
 import { repositoryName } from "@/prismicio";
 import Header from "@/components/Header";
+import { Analytics } from "@vercel/analytics/react";
+import Footer from "@/components/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -24,6 +26,8 @@ export default async function RootLayout({
       <body className="overflow-x-hidden antialiased">
         <Header />
         {children}
+        <Footer/>
+        <Analytics />
         <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>

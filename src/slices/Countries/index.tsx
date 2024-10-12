@@ -57,18 +57,18 @@ const Countries = async ({ slice }: CountriesProps): Promise<JSX.Element> => {
             </div>
           </div>
           {countries && countries.length > 0 && (
-            <div className="mt-[30px] flex flex-wrap gap-[24px] items-center justify-center">
+            <div className="mt-[30px] gap-[24px] items-center justify-center flex flex-wrap">
               {countries.map((country, index) => {
                 return (
                   <div
-                    className="group gap-[12px] flex relative flex-col lg:text-start text-center lg:items-start items-center md:min-w-[280px]"
+                    className="group gap-[6px] max-w-full min-w-full flex relative flex-col lg:text-start text-center lg:items-start items-center md:min-w-[280px] md:max-h-[390px]"
                     key={index}
                   >
                     <PrismicNextImage
                       field={country.data.country_banner}
                       width={280}
                       height={330}
-                      className="object-cover object-center max-w-[280px] max-h-[330px] rounded-[12px]"
+                      className="object-cover object-center max-w-full w-full md:max-w-[280px] md:max-h-[330px] max-h-[330px] rounded-[12px]"
                     />
                     <CustomLink
                       className="after:absolute after:inset-0 after:w-full after:h-full text-secondary group-hover:gap-[20px]"

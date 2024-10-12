@@ -1,16 +1,25 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { JSXMapSerializer, PrismicRichText, SliceZone } from "@prismicio/react";
-
-import { createClient } from "@/prismicio";
-import { components } from "@/slices";
 import { Bounded } from "@/components/Bounded";
 import ButtonLink from "@/components/ButtonLink";
-import { isFilled } from "@prismicio/client";
-import { PrismicNextImage } from "@prismicio/next";
 import HeroShapes from "@/components/HeroShapes";
+import { Content, isFilled } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
+import {
+  JSXMapSerializer,
+  PrismicRichText,
+  SliceComponentProps,
+} from "@prismicio/react";
+import clsx from "clsx";
+import Image from "next/image";
 
-type Params = { uid: string };
+/**
+ * Props for `HeroAlternative`.
+ */
+export type HeroAlternativeProps =
+  SliceComponentProps<Content.HeroAlternativeSlice>;
+
+/**
+ * Component for "HeroAlternative" Slices.
+ */
 
 const headerComponents: JSXMapSerializer = {
   heading1: ({ children }) => (
@@ -28,18 +37,15 @@ const headerComponents: JSXMapSerializer = {
   ),
 };
 
-export default async function Page({ params }: { params: Params }) {
-  const client = createClient();
-  const page = await client
-    .getByUID("service", params.uid)
-    .catch(() => notFound());
-
-  const buttons = page.data.buttons;
-  const image = page.data.service_banner;
-  const icon = page.data.service_icon;
+const HeroAlternative = ({ slice }: HeroAlternativeProps): JSX.Element => {
+  const image = slice.primary.image;
+  const buttons = slice.primary.buttons;
 
   return (
-    <section className="flex flex-col">
+    <section
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+    >
       <Bounded
         as="div"
         yPadding="base"
@@ -48,18 +54,13 @@ export default async function Page({ params }: { params: Params }) {
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:text-start text-center">
           <div className="flex flex-col gap-[32px] justify-center items-center md:justify-start md:items-start">
             <div className="flex flex-col gap-[12px]">
-              <PrismicNextImage
-                field={icon}
-                width={54}
-                height={54}
-                className="object-contain object-center max-w-[54px] max-h-[54px]"
-              />
-              <h1 className="bg-gradient-to-b from-primary to-secondary bg-clip-text not-italic text-transparent">
-                {page.data.heading}
-              </h1>
               <PrismicRichText
                 components={headerComponents}
-                field={page.data.description}
+                field={slice.primary.heading}
+              />
+              <PrismicRichText
+                components={headerComponents}
+                field={slice.primary.text}
               />
             </div>
             {buttons && buttons.length > 0 && (
@@ -92,37 +93,20 @@ export default async function Page({ params }: { params: Params }) {
               </div>
             )}
             <div className="absolute right-0 hidden md:block">
+              {/* <Image
+                className="opacity-35 object-cover object-center max-h-full max-w-[540px]"
+                src="/fvc-shapes.png"
+                width={540}
+                height={300}
+                alt="Call to action background shapes"
+              /> */}
               <HeroShapes />
             </div>
           </div>
         </div>
       </Bounded>
-      <SliceZone slices={page.data.slices} components={components} />
     </section>
   );
-}
+};
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Params;
-}): Promise<Metadata> {
-  const client = createClient();
-  const page = await client
-    .getByUID("service", params.uid)
-    .catch(() => notFound());
-
-  return {
-    title: page.data.meta_title,
-    description: page.data.meta_description,
-  };
-}
-
-export async function generateStaticParams() {
-  const client = createClient();
-  const pages = await client.getAllByType("service");
-
-  return pages.map((page) => {
-    return { uid: page.uid };
-  });
-}
+export default HeroAlternative;

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createFolderIfNotExists, uploadFileToGoogleDrive } from '../../../lib/googleDrive';
 import { sendNotificationEmail } from '../../../lib/sendEmail';
+import { randomBytes } from 'node:crypto';
 
 export async function POST(req: NextRequest) {
     try {
@@ -37,7 +38,9 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        const userFolderId = await createFolderIfNotExists(userName, parentFolderId);
+        const folderName = `${firstName} ${lastName ? lastName + ' - ' : ' - '}${userEmail ? userEmail : randomBytes(6).toString('hex')}`;
+
+        const userFolderId = await createFolderIfNotExists(folderName, parentFolderId);
 
         const files: Array<{ originalname: string; mimetype: string; buffer: Buffer }> = [];
         for (const value of formData.values()) {

@@ -130,7 +130,7 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
     setIsLoading(false);
 
     if (response.ok) {
-      setMessages({ general: "Application submitted successfully!" });
+      setMessages({ general: "Application submitted successfully! You will receive an Email Shortly." });
       setFormValues({
         firstName: "",
         lastName: "",
@@ -145,6 +145,10 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
         general: "Failed to submit the application. Please try again.",
       });
     }
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -290,6 +294,11 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
                       required={doc.required}
                       onChange={handleFileChange}
                     />
+                    {formValues.files[fileName] && (
+                      <div className="mb-2 text-primary">
+                        {formValues.files[fileName].name}
+                      </div>
+                    )}
                     {messages.fileErrors && messages.fileErrors[fileName] && (
                       <div className="mt-1 mb-2 text-red-600">
                         {messages.fileErrors[fileName]}

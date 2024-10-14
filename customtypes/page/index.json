@@ -36,6 +36,7 @@
         "config": {
           "choices": {
             "google_map": {
+            "book_consultation": {
               "type": "SharedSlice"
             },
             "images_carousel": {

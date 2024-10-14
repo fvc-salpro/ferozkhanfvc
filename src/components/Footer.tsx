@@ -19,7 +19,7 @@ export default async function Footer() {
               <h6 className="text-h6-m text-dark-primary">
                 {footer.data.heading_one}
               </h6>
-              {footer.data.quick_links && footer.data.quick_links.length && (
+              {footer.data.quick_links && footer.data.quick_links.length > 0 && (
                 <div className="flex flex-col">
                   {footer.data.quick_links.map((quickLink, index) => (
                     <PrismicNextLink
@@ -37,7 +37,7 @@ export default async function Footer() {
               <h6 className="text-h6-m text-dark-primary">
                 {footer.data.heading_two}
               </h6>
-              {footer.data.services && footer.data.services.length && (
+              {footer.data.services && footer.data.services.length > 0 && (
                 <div className="flex flex-col">
                   {footer.data.services.map((serviceLink, index) => (
                     <PrismicNextLink
@@ -56,7 +56,7 @@ export default async function Footer() {
                 {footer.data.heading_three}
               </h6>
               {footer.data.top_countries &&
-                footer.data.top_countries.length && (
+                footer.data.top_countries.length > 0 && (
                   <div className="flex flex-col">
                     {footer.data.top_countries.map((countryLink, index) => (
                       <PrismicNextLink
@@ -74,7 +74,7 @@ export default async function Footer() {
               <h6 className="text-h6-m text-dark-primary">
                 {footer.data.heading_four}
               </h6>
-              {footer.data.contact_us && footer.data.contact_us.length && (
+              {footer.data.contact_us && footer.data.contact_us.length > 0 && (
                 <div className="flex flex-col">
                   {footer.data.contact_us.map((contactLink, index) => (
                     <PrismicNextLink

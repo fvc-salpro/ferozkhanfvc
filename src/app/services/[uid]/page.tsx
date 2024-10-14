@@ -47,7 +47,7 @@ export default async function Page({ params }: { params: Params }) {
       >
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:text-start text-center">
           <div className="flex flex-col gap-[32px] justify-center items-center md:justify-start md:items-start">
-            <div className="flex flex-col gap-[12px]">
+            <div className="flex flex-col gap-[12px] md:items-start items-center">
               <PrismicNextImage
                 field={icon}
                 width={54}

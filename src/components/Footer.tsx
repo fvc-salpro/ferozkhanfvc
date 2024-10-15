@@ -6,32 +6,33 @@ export default async function Footer() {
   const client = createClient();
   const settings = await client.getSingle("settings");
   const footer = await client.getSingle("footer");
-  const socials = settings.data.socials;
 
   return (
     <footer className="bg-footer-bg text-center md:text-start">
       <Bounded as="header" yPadding="null">
         <div
           className="relative md:px-[32px] px-[24px] flex flex-col items-center gap-x-6 w-full py-[30px] md:py-[46px]
-          gap-y-3 leading-none border-b border-gray-primary/10">
+          gap-y-3 leading-none border-b border-gray-primary/10"
+        >
           <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-[30px] justify-between w-full">
             <div className="flex flex-col gap-[12px]">
               <h6 className="text-h6-m text-dark-primary">
                 {footer.data.heading_one}
               </h6>
-              {footer.data.quick_links && footer.data.quick_links.length > 0 && (
-                <div className="flex flex-col">
-                  {footer.data.quick_links.map((quickLink, index) => (
-                    <PrismicNextLink
-                      className="py-[4px] hover:text-secondary duration-300 ease-in-out"
-                      key={index}
-                      field={quickLink.link}
-                    >
-                      {quickLink.link_text}
-                    </PrismicNextLink>
-                  ))}
-                </div>
-              )}
+              {footer.data.quick_links &&
+                footer.data.quick_links.length > 0 && (
+                  <div className="flex flex-col">
+                    {footer.data.quick_links.map((quickLink, index) => (
+                      <PrismicNextLink
+                        className="py-[4px] hover:text-secondary duration-300 ease-in-out"
+                        key={index}
+                        field={quickLink.link}
+                      >
+                        {quickLink.link_text}
+                      </PrismicNextLink>
+                    ))}
+                  </div>
+                )}
             </div>
             <div className="flex flex-col gap-[12px]">
               <h6 className="text-h6-m text-dark-primary">
@@ -100,7 +101,7 @@ export default async function Footer() {
             />
           </PrismicNextLink>
         </div>
-        <div className="flex flex-row items-center justify-between text-gray-primary text-b16 px-[32px] py-[16px] w-full">
+        <div className="flex lg:flex-row flex-col items-center justify-between text-gray-primary text-b16 px-[32px] py-[16px] w-full">
           <p>{new Date().getFullYear()} Feroz Visa Consultancy</p>
           <p>Powered by SalPro DEV</p>
         </div>

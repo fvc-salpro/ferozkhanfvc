@@ -72,7 +72,7 @@ const Countries = async ({ slice }: CountriesProps): Promise<JSX.Element> => {
                     />
                     <CustomLink
                       className="after:absolute after:inset-0 after:w-full after:h-full text-secondary group-hover:gap-[20px]"
-                      href={`/services/${country.uid}`}
+                      href={`/countries/${country.uid}`}
                     >
                       {country.data.heading}
                     </CustomLink>

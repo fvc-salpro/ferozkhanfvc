@@ -82,7 +82,7 @@ export default function MobileNav({ navigation, settings }: NavBarProps) {
         })}
         {socials && socials.length > 0 && (
           <div
-            className="flex flex-row mt-[30px] justify-end flex-wrap gap-[10px] bg-gradient-to-r from-primary to-primary-dark py-[8px] px-[10px] 
+            className="flex flex-row mt-[30px] justify-center flex-wrap gap-[10px] bg-gradient-to-r from-primary to-primary-dark py-[8px] px-[10px] 
           top-[20%] rounded-[8px]"
           >
             {socials.map((social, index) => (

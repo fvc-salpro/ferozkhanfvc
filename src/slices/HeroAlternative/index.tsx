@@ -10,6 +10,8 @@ import {
 } from "@prismicio/react";
 import clsx from "clsx";
 import Image from "next/image";
+import Link from "next/link";
+import { PiArrowDownLight } from "react-icons/pi";
 
 /**
  * Props for `HeroAlternative`.
@@ -80,6 +82,9 @@ const HeroAlternative = ({ slice }: HeroAlternativeProps): JSX.Element => {
                 ))}
               </div>
             )}
+            <Link href="#about" className="flex justify-center items-center rounded-full w-[42px] h-[42px] bg-primary/15 animate-bounce duration-500 ease-in-out">
+              <PiArrowDownLight color="#F74C06"/>
+          </Link>
           </div>
           <div className="flex justify-center items-center relative">
             {isFilled.image(image) && (

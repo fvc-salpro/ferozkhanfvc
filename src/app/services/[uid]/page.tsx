@@ -9,6 +9,8 @@ import ButtonLink from "@/components/ButtonLink";
 import { isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import HeroShapes from "@/components/HeroShapes";
+import Link from "next/link";
+import { PiArrowDownLight } from "react-icons/pi";
 
 type Params = { uid: string };
 
@@ -79,6 +81,9 @@ export default async function Page({ params }: { params: Params }) {
                 ))}
               </div>
             )}
+            <Link href="#about" className="flex justify-center items-center rounded-full w-[42px] h-[42px] bg-primary/15 animate-bounce duration-500 ease-in-out">
+              <PiArrowDownLight color="#F74C06"/>
+          </Link>
           </div>
           <div className="flex justify-center items-center relative">
             {isFilled.image(image) && (

@@ -7,6 +7,7 @@ import FileUploadInput from "../../components/FileUploadInput";
 import { useState } from "react";
 import { Bounded } from "@/components/Bounded";
 import { PrismicRichText } from "@/components/PrismicRichText";
+import SelectInput from "@/components/SelectInput";
 
 export type ApplyFormProps = SliceComponentProps<Content.ApplyFormSlice>;
 
@@ -38,6 +39,13 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+  const [checkboxChecked, setCheckboxChecked] = useState(false);
+  const [checkboxError, setCheckboxError] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setCheckboxChecked(!checkboxChecked);
+    setCheckboxError(false);
+  };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -81,6 +89,11 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!checkboxChecked) {
+      setCheckboxError(true);
+      return;
+    }
 
     if (
       !formValues.firstName ||
@@ -130,7 +143,10 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
     setIsLoading(false);
 
     if (response.ok) {
-      setMessages({ general: "Application submitted successfully! You will receive an Email Shortly." });
+      setMessages({
+        general:
+          "Application submitted successfully! You will receive an Email Shortly.",
+      });
       setFormValues({
         firstName: "",
         lastName: "",
@@ -162,15 +178,18 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
         yPadding="base"
         className="bg-white md:px-[32px] px-[24px]"
       >
-        <h2 className="text-2xl mb-6">{slice.primary.header}</h2>
+        <h2 className="text-2xl mb-6 text-center">{slice.primary.header}</h2>
         {messages.general && (
           <div className="mb-4 p-2 bg-red-100 text-blue-700 rounded-md">
             {messages.general}
           </div>
         )}
-        <div className="flex flex-col md:flex-row gap-[30px]">
+        <div className="flex flex-col gap-[30px] justify-center items-center">
+          {/* <div className="mb-[24px] p-4 bg-primary/10 rounded-md border border-primary/5 h-fit max-w-[620px]">
+            <PrismicRichText field={slice.primary.form_instructions} />
+          </div> */}
           <form
-            className="flex w-full flex-col gap-[14px]"
+            className="flex w-full flex-col gap-[14px] max-w-[620px]"
             onSubmit={handleSubmit}
           >
             <div className="flex flex-row gap-[24px] w-full">
@@ -216,13 +235,17 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
                 onChange={handleInputChange}
                 required={true}
               />
-
-              <TextInput
+              <SelectInput
                 label="Visa Type"
                 name="visaType"
                 value={formValues.visaType}
                 onChange={handleInputChange}
-                required={true}
+                options={[
+                  { value: "student-visa", label: "Student Visa" },
+                  { value: "visit-visa", label: "Visit Visa" },
+                  { value: "work-permit", label: "Work Permit" },
+                  { value: "eligibility-check", label: "Eligibility Check" },
+                ]}
               />
             </div>
             {/* File Upload Fields */}
@@ -309,6 +332,18 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
               })}
             </div>
 
+            <div className="w-full mb-4">
+              <label className="flex items-center space-x-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={checkboxChecked}
+                  onChange={handleCheckboxChange}
+                  className="w-[32px] h-[32px]"
+                />
+               <PrismicRichText field={slice.primary.form_instructions} />
+              </label>
+            </div>
+
             <button
               type="submit"
               className="relative inline-flex h-fitrounded-[8px] text-b16 font-normal border bg-gradient-to-r from-primary to-primary-dark hover:shadow-md 
@@ -346,9 +381,6 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
               )}
             </button>
           </form>
-          <div className="mb-6 p-4 bg-primary/10 rounded-md border border-primary/5 h-fit -order-1 md:order-1 max-w-[320px]">
-            <PrismicRichText field={slice.primary.form_instructions} />
-          </div>
         </div>
       </Bounded>
     </section>

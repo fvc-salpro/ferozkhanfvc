@@ -41,6 +41,7 @@ const Countries = async ({ slice }: CountriesProps): Promise<JSX.Element> => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      id="about"
     >
       <Bounded as="div" className="bg-white px-[24px] md:px-[32px]">
         <div className="flex flex-col justify-center items-center">

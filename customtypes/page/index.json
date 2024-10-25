@@ -36,68 +36,69 @@
         "config": {
           "choices": {
             "google_map": {
-            "book_consultation": {
-              "type": "SharedSlice"
-            },
-            "images_carousel": {
-              "type": "SharedSlice"
-            },
-            "hero_alternative": {
-              "type": "SharedSlice"
-            },
-            "process": {
-              "type": "SharedSlice"
-            },
-            "icon_cards": {
-              "type": "SharedSlice"
-            },
-            "counters": {
-              "type": "SharedSlice"
-            },
-            "apply_form": {
-              "type": "SharedSlice"
-            },
-            "faqs": {
-              "type": "SharedSlice"
-            },
-            "video_reviews": {
-              "type": "SharedSlice"
-            },
-            "reviews": {
-              "type": "SharedSlice"
-            },
-            "about_ceo": {
-              "type": "SharedSlice"
-            },
-            "countries": {
-              "type": "SharedSlice"
-            },
-            "call_to_action": {
-              "type": "SharedSlice"
-            },
-            "why_us": {
-              "type": "SharedSlice"
-            },
-            "services": {
-              "type": "SharedSlice"
-            },
-            "hero": {
-              "type": "SharedSlice"
-            },
-            "quote": {
-              "type": "SharedSlice"
-            },
-            "text": {
-              "type": "SharedSlice"
-            },
-            "image": {
-              "type": "SharedSlice"
-            },
-            "image_cards": {
-              "type": "SharedSlice"
-            },
-            "text_with_image": {
-              "type": "SharedSlice"
+              "book_consultation": {
+                "type": "SharedSlice"
+              },
+              "images_carousel": {
+                "type": "SharedSlice"
+              },
+              "hero_alternative": {
+                "type": "SharedSlice"
+              },
+              "process": {
+                "type": "SharedSlice"
+              },
+              "icon_cards": {
+                "type": "SharedSlice"
+              },
+              "counters": {
+                "type": "SharedSlice"
+              },
+              "apply_form": {
+                "type": "SharedSlice"
+              },
+              "faqs": {
+                "type": "SharedSlice"
+              },
+              "video_reviews": {
+                "type": "SharedSlice"
+              },
+              "reviews": {
+                "type": "SharedSlice"
+              },
+              "about_ceo": {
+                "type": "SharedSlice"
+              },
+              "countries": {
+                "type": "SharedSlice"
+              },
+              "call_to_action": {
+                "type": "SharedSlice"
+              },
+              "why_us": {
+                "type": "SharedSlice"
+              },
+              "services": {
+                "type": "SharedSlice"
+              },
+              "hero": {
+                "type": "SharedSlice"
+              },
+              "quote": {
+                "type": "SharedSlice"
+              },
+              "text": {
+                "type": "SharedSlice"
+              },
+              "image": {
+                "type": "SharedSlice"
+              },
+              "image_cards": {
+                "type": "SharedSlice"
+              },
+              "text_with_image": {
+                "type": "SharedSlice"
+              }
             }
           }
         }

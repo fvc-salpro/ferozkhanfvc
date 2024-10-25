@@ -8,6 +8,8 @@ import { PrismicRichText } from "@/components/PrismicRichText";
 import ButtonLink from "@/components/ButtonLink";
 import Image from "next/image";
 import AnimatedContent from "@/components/AnimatedContent";
+import { PiArrowDownLight } from "react-icons/pi";
+import Link from "next/link";
 
 type HeroProps = SliceComponentProps<Content.HeroSlice>;
 
@@ -90,14 +92,17 @@ const Hero = ({ slice }: HeroProps) => {
                 );
               })}
           </div>
-          <div className="relative w-full justify-center items-center flex lg:mt-[66px]">
+          <Link href="#about" className="flex justify-center items-center rounded-full w-[42px] h-[42px] bg-primary/15 animate-bounce duration-500 ease-in-out">
+              <PiArrowDownLight color="#F74C06"/>
+          </Link>
+          <div className="relative w-full justify-center items-center flex lg:mt-[52px]">
             {isFilled.image(backgroundImage) && (
               <PrismicNextImage
                 field={backgroundImage}
                 alt=""
-                width={940}
-                height={440}
-                className="pointer-events-none z-[2] lg:-translate-y-[46px] rounded-[12px] select-none object-cover object-center max-w-[360px] md:max-w-[940px] md:max-h-[440px] max-h-[360px] md:h-full h-[360px] w-full"
+                width={1280}
+                height={520}
+                className="pointer-events-none z-[2] lg:-translate-y-[46px] rounded-[12px] select-none object-cover object-center max-w-full md:max-w-full md:max-h-[520px] max-h-[360px] md:h-full h-[360px] w-full"
               />
             )}
             <Image

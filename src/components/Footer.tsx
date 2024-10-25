@@ -1,11 +1,13 @@
 import { createClient } from "@/prismicio";
 import { Bounded } from "./Bounded";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import Link from "next/link";
 
 export default async function Footer() {
   const client = createClient();
   const settings = await client.getSingle("settings");
   const footer = await client.getSingle("footer");
+  const socials = settings.data.socials;
 
   return (
     <footer className="bg-footer-bg text-center md:text-start">
@@ -90,6 +92,28 @@ export default async function Footer() {
               )}
             </div>
           </div>
+          {socials && socials.length > 0 && (
+            <div
+              className="flex flex-row mt-[30px] justify-center flex-wrap gap-[10px] bg-gradient-to-r from-primary to-primary-dark py-[8px] px-[10px] 
+          top-[20%] rounded-[8px]"
+            >
+              {socials.map((social, index) => (
+                <Link
+                  className="rounded-[8px] duration-300 ease-in-out transition-all hover:bg-[#ffffff15] backdrop-blur-sm hover:shadow-sm 
+              shadow-black/5"
+                  key={index}
+                  href={social.link}
+                  target="_blank"
+                >
+                  <PrismicNextImage
+                    width={32}
+                    height={32}
+                    field={social.icon}
+                  />
+                </Link>
+              ))}
+            </div>
+          )}
           <PrismicNextLink
             href="/"
             className="text-xl font-semibold tracking-tight"
@@ -103,7 +127,16 @@ export default async function Footer() {
         </div>
         <div className="flex lg:flex-row flex-col items-center justify-between text-gray-primary text-b16 px-[32px] py-[16px] w-full">
           <p>{new Date().getFullYear()} Feroz Visa Consultancy</p>
-          <p>Powered by SalPro DEV</p>
+          <p>
+            Powered by{" "}
+            <Link
+              className="font-semibold underline"
+              target="_blank"
+              href="https://salprodev.com"
+            >
+              SalPro DEV
+            </Link>
+          </p>
         </div>
       </Bounded>
     </footer>

@@ -12,6 +12,82 @@ import SelectInput from "@/components/SelectInput";
 export type ApplyFormProps = SliceComponentProps<Content.ApplyFormSlice>;
 
 const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
+  const documentRequirements = {
+    "student-visa": {
+      required: [
+        "Passport",
+        "CNIC",
+        "White Background Photo",
+        "CV",
+        "HSSC DMC",
+        "HSSC Certificate",
+        "Recommendation Letter 01",
+        "Recommendation Letter 02",
+        "English Proficiency Certificate",
+      ],
+      optional: [
+        "English Test Certificate",
+        "Matric DMC",
+        "Matric Certificate",
+        "Bachelor Degree Certificate",
+        "Bachelor Transcript",
+        "Experience Certificate",
+        "Travel History - Visa Stickers",
+        "Travel History - E-Visas",
+        "Travel History - Refusal Letters",
+      ],
+    },
+    "visit-visa": {
+      required: [
+        "Passport",
+        "CNIC",
+        "White Background Photo",
+        "CV",
+        "Business Registration Docs - NTN",
+        "Business Registration Docs - Tax Return",
+        "Business Registration Docs - Tax Exemption",
+        "Business Registration Docs - Chamber Membership Certificate",
+        "Business Registration Docs - Job Service Letter",
+        "Business Registration Docs - NOC from Employer",
+        "6 Months Bank Statement - Salary Account",
+        "6 Months Bank Statement - Business Account",
+        "Bank Maintenance Letter",
+      ],
+      optional: [
+        "Business Visiting Card",
+        "Business Letterhead",
+        "Business Place/Office Photos - Front with Banner",
+        "Business Place/Office Photos - Sitting Area",
+        "Business Place/Office Photos - Storage",
+        "Visit Purpose Documentation",
+        "Sponsor Certificate",
+        "Invitation from Contact",
+        "Travel History - Visa Stickers",
+        "Travel History - E-Visas",
+        "Travel History - Refusal Letters",
+      ],
+    },
+    "work-permit": {
+      required: [
+        "Passport",
+        "CNIC",
+        "White Background Photo",
+        "CV",
+      ],
+      optional: [
+        "Educational Documents - Fsc DMC",
+        "Educational Documents - Matric DMC",
+        "Educational Documents - BSc DMC",
+        "Educational Documents - MSc DMC",
+        "Work Experience Certificates - Job Certificates",
+        "Work Experience Certificates - Training Certificates",
+        "Travel History - Visa Stickers",
+        "Travel History - Refusal Letters",
+      ],
+    },
+  };
+
+
   const [formValues, setFormValues] = useState<{
     firstName: string;
     lastName: string;
@@ -37,6 +113,8 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
     general: "",
     fileErrors: {},
   });
+
+  const selectedDocuments = documentRequirements[formValues.visaType] || { required: [], optional: [] };
 
   const [isLoading, setIsLoading] = useState(false);
   const [checkboxChecked, setCheckboxChecked] = useState(false);
@@ -91,7 +169,10 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
     e.preventDefault();
 
     if (!checkboxChecked) {
-      setCheckboxError(true);
+      setMessages((prev) => ({
+        ...prev,
+        general: "Please acknowledge the Check.",
+      }));
       return;
     }
 
@@ -245,77 +326,48 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
                   { value: "student-visa", label: "Student Visa" },
                   { value: "visit-visa", label: "Visit Visa" },
                   { value: "work-permit", label: "Work Permit" },
-                  { value: "eligibility-check", label: "Eligibility Check" },
                 ]}
               />
             </div>
-            {/* File Upload Fields */}
+
+            {/* Conditionally Render File Uploads */}
+            <h3 className="mt-4 font-bold">Required Documents</h3>
             <div className="grid grid-cols-2 gap-x-[30px]">
-              {[
-                {
-                  label: "Passport",
-                  required: true,
-                },
-                {
-                  label: "CNIC",
-                  required: true,
-                },
-                {
-                  label: "White Background Photo",
-                  required: true,
-                },
-                {
-                  label: "CV",
-                  required: false,
-                },
-                {
-                  label: "HSSC Certificate",
-                  required: false,
-                },
-                {
-                  label: "HSSC DMC",
-                  required: false,
-                },
-                {
-                  label: "Matric Certificate",
-                  required: false,
-                },
-                {
-                  label: "Matric DMC",
-                  required: false,
-                },
-                {
-                  label: "Recommendation Letter 1",
-                  required: false,
-                },
-                {
-                  label: "Recommendation Letter 2",
-                  required: false,
-                },
-                {
-                  label: "English Proficiency Certificate",
-                  required: false,
-                },
-                {
-                  label: "English Test Certificate",
-                  required: false,
-                },
-                {
-                  label: "Work Experience Certificate",
-                  required: false,
-                },
-                {
-                  label: "Other Documents",
-                  required: false,
-                },
-              ].map((doc, index) => {
-                const fileName = doc.label.toLowerCase().replace(/\s+/g, "-");
+              {selectedDocuments.required.map((doc, index) => {
+                const fileName = doc.toLowerCase().replace(/\s+/g, "-"); // Unique fileName for each document
                 return (
                   <div key={index}>
                     <FileUploadInput
-                      label={doc.label}
+                      label={doc}
                       name={fileName}
-                      required={doc.required}
+                      required={true}
+                      onChange={handleFileChange}
+                    />
+                    {formValues.files[fileName] && (
+                      <div className="mb-2 text-primary">
+                        {formValues.files[fileName].name}
+                      </div>
+                    )}
+                    {messages.fileErrors && messages.fileErrors[fileName] && (
+                      <div className="mt-1 mb-2 text-red-600">
+                        {messages.fileErrors[fileName]}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <h3 className="mt-4 font-bold">Optional Documents</h3>
+            <div className="grid grid-cols-2 gap-x-[30px]">
+              {selectedDocuments.optional.map((doc, index) => {
+                const fileName = doc.toLowerCase().replace(/\s+/g, "-"); // Unique fileName for each document
+                return (
+                  <div key={index}>
+                    <FileUploadInput
+                      label={doc}
+                      name={fileName}
+                      required={false}
                       onChange={handleFileChange}
                     />
                     {formValues.files[fileName] && (
@@ -340,8 +392,9 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
                   checked={checkboxChecked}
                   onChange={handleCheckboxChange}
                   className="w-[32px] h-[32px]"
+                  required
                 />
-               <PrismicRichText field={slice.primary.form_instructions} />
+                <PrismicRichText field={slice.primary.form_instructions} />
               </label>
             </div>
 

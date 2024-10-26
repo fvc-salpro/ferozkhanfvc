@@ -4,7 +4,7 @@
   "name": "Wrapper",
   "description": "Wrapper",
   "variations": [
-    {
+    {  
       "id": "default",
       "name": "Default",
       "docURL": "...",

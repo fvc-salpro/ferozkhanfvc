@@ -172,6 +172,7 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="p-8 bg-white shadow-md rounded-md"
+      id="apply-now"
     >
       <Bounded
         as="div"

@@ -329,28 +329,56 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
             {/* Conditionally Render File Uploads */}
             <h3 className="mt-4 font-bold">Required Documents</h3>
             <div className="grid grid-cols-2 gap-x-[30px]">
-              {selectedDocuments.required.map((doc, index) => (
-                <FileUploadInput
-                  key={index}
-                  label={doc}
-                  name={doc.toLowerCase().replace(/\s+/g, "-")}
-                  required={true}
-                  onChange={handleFileChange}
-                />
-              ))}
+              {selectedDocuments.required.map((doc, index) => {
+                const fileName = doc.toLowerCase().replace(/\s+/g, "-"); // Unique fileName for each document
+                return (
+                  <div key={index}>
+                    <FileUploadInput
+                      label={doc}
+                      name={fileName}
+                      required={true}
+                      onChange={handleFileChange}
+                    />
+                    {formValues.files[fileName] && (
+                      <div className="mb-2 text-primary">
+                        {formValues.files[fileName].name}
+                      </div>
+                    )}
+                    {messages.fileErrors && messages.fileErrors[fileName] && (
+                      <div className="mt-1 mb-2 text-red-600">
+                        {messages.fileErrors[fileName]}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
 
             <h3 className="mt-4 font-bold">Optional Documents</h3>
             <div className="grid grid-cols-2 gap-x-[30px]">
-              {selectedDocuments.optional.map((doc, index) => (
-                <FileUploadInput
-                  key={index}
-                  label={doc}
-                  required={false}
-                  name={doc.toLowerCase().replace(/\s+/g, "-")}
-                  onChange={handleFileChange}
-                />
-              ))}
+              {selectedDocuments.optional.map((doc, index) => {
+                const fileName = doc.toLowerCase().replace(/\s+/g, "-"); // Unique fileName for each document
+                return (
+                  <div key={index}>
+                    <FileUploadInput
+                      label={doc}
+                      name={fileName}
+                      required={false}
+                      onChange={handleFileChange}
+                    />
+                    {formValues.files[fileName] && (
+                      <div className="mb-2 text-primary">
+                        {formValues.files[fileName].name}
+                      </div>
+                    )}
+                    {messages.fileErrors && messages.fileErrors[fileName] && (
+                      <div className="mt-1 mb-2 text-red-600">
+                        {messages.fileErrors[fileName]}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
 
             <div className="w-full mb-4">

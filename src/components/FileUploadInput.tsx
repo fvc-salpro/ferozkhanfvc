@@ -47,7 +47,7 @@ const FileUploadInput: React.FC<FileUploadInputProps> = ({
           required={required}
           name={name}
           onChange={onChange}
-          className="hidden"
+          className="inset-0 opacity-0 cursor-pointer"
         />
       </label>
     </div>

@@ -169,7 +169,10 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
     e.preventDefault();
 
     if (!checkboxChecked) {
-      setCheckboxError(true);
+      setMessages((prev) => ({
+        ...prev,
+        general: "Please acknowledge the Check.",
+      }));
       return;
     }
 
@@ -388,6 +391,7 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
                   checked={checkboxChecked}
                   onChange={handleCheckboxChange}
                   className="w-[32px] h-[32px]"
+                  required
                 />
                 <PrismicRichText field={slice.primary.form_instructions} />
               </label>

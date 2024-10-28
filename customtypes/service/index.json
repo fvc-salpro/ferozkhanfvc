@@ -82,6 +82,39 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "google_map": {
+              "type": "SharedSlice"
+            },
+            "hero": {
+              "type": "SharedSlice"
+            },
+            "image": {
+              "type": "SharedSlice"
+            },
+            "images_carousel": {
+              "type": "SharedSlice"
+            },
+            "our_partners": {
+              "type": "SharedSlice"
+            },
+            "quote": {
+              "type": "SharedSlice"
+            },
+            "about_ceo": {
+              "type": "SharedSlice"
+            },
+            "video_reviews": {
+              "type": "SharedSlice"
+            },
+            "reviews": {
+              "type": "SharedSlice"
+            },
+            "book_consultation": {
+              "type": "SharedSlice"
+            },
+            "our_socials": {
+              "type": "SharedSlice"
+            },
             "wrapper": {
               "type": "SharedSlice"
             },

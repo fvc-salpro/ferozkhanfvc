@@ -35,6 +35,15 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "our_partners": {
+              "type": "SharedSlice"
+            },
+            "wrapper": {
+              "type": "SharedSlice"
+            },
+            "our_socials": {
+              "type": "SharedSlice"
+            },
             "google_map": {
               "type": "SharedSlice"
             },

@@ -23,7 +23,7 @@ const GoogleMap = ({ slice }: GoogleMapProps): JSX.Element => {
             height="450"
             src={slice.primary.google_map_url}
             title="YouTube video player"
-            className="rounded-[12px] max-w-full max-h-[450px] w-full h-full"
+            className="rounded-[12px] max-w-full max-h-[450px] w-full lg:h-[450px] h-[360px]"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;"
             referrerPolicy="strict-origin-when-cross-origin"

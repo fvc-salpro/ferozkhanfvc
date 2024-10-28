@@ -1,7 +1,7 @@
 "use client";
 
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { JSXMapSerializer, SliceComponentProps } from "@prismicio/react";
 import TextInput from "../../components/TextInput";
 import FileUploadInput from "../../components/FileUploadInput";
 import { useState } from "react";
@@ -10,6 +10,20 @@ import { PrismicRichText } from "@/components/PrismicRichText";
 import SelectInput from "@/components/SelectInput";
 
 export type ApplyFormProps = SliceComponentProps<Content.ApplyFormSlice>;
+
+const components: JSXMapSerializer = {
+  em: ({ children }) => (
+    <em className="text-b14 text-gray-primary italic">
+      {children}
+    </em>
+  ),
+  strong: ({ children }) => (
+    <strong className="font-semibold">{children}</strong>
+  ),
+  paragraph: ({ children }) => (
+    <p className="mb-7 last:mb-0 text-b14 text-gray-primary">{children}</p>
+  ),
+};
 
 const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
   const documentRequirements = {
@@ -252,7 +266,7 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="p-8 bg-white shadow-md rounded-md"
+      className="bg-white"
       id="apply-now"
     >
       <Bounded
@@ -394,7 +408,7 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
                   className="w-[32px] h-[32px]"
                   required
                 />
-                <PrismicRichText field={slice.primary.form_instructions} />
+                <PrismicRichText components={components} field={slice.primary.form_instructions} />
               </label>
             </div>
 

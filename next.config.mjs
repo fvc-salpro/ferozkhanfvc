@@ -8,7 +8,7 @@ const nextConfig = {
                 headers: [
                     {
                         key: "Content-Security-Policy",
-                        value: "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://calendly.com https://fvcadmin.prismic.io;"
+                        value: "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://calendly.com https://fvcadmin.prismic.io https://maps.app.goo.gl https://www.google.com;"
                     }
                 ]
             }

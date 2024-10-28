@@ -5,6 +5,22 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type CountryDocumentDataSlicesSlice =
+  | WhyUsSlice
+  | VideoReviewsSlice
+  | WrapperSlice
+  | CountriesSlice
+  | GoogleMapSlice
+  | ImagesCarouselSlice
+  | HeroSlice
+  | ReviewsSlice
+  | ImageSlice
+  | QuoteSlice
+  | CountersSlice
+  | OurPartnersSlice
+  | BookConsultationSlice
+  | OurSocialsSlice
+  | ProcessSlice
+  | ApplyFormSlice
   | HeroAlternativeSlice
   | AboutCeoSlice
   | TextSlice
@@ -379,6 +395,9 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | OurPartnersSlice
+  | WrapperSlice
+  | OurSocialsSlice
   | GoogleMapSlice
   | BookConsultationSlice
   | ImagesCarouselSlice
@@ -519,6 +538,17 @@ export interface ServiceDocumentDataButtonsItem {
 }
 
 type ServiceDocumentDataSlicesSlice =
+  | GoogleMapSlice
+  | HeroSlice
+  | ImageSlice
+  | ImagesCarouselSlice
+  | OurPartnersSlice
+  | QuoteSlice
+  | AboutCeoSlice
+  | VideoReviewsSlice
+  | ReviewsSlice
+  | BookConsultationSlice
+  | OurSocialsSlice
   | WrapperSlice
   | TextSlice
   | HeroAlternativeSlice
@@ -1900,6 +1930,143 @@ export type ImagesCarouselSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *OurPartners → Default → Primary → Partners*
+ */
+export interface OurPartnersSliceDefaultPrimaryPartnersItem {
+  /**
+   * Logo field in *OurPartners → Default → Primary → Partners*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_partners.default.primary.partners[].logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Link field in *OurPartners → Default → Primary → Partners*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_partners.default.primary.partners[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *OurPartners → Default → Primary*
+ */
+export interface OurPartnersSliceDefaultPrimary {
+  /**
+   * Heading field in *OurPartners → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_partners.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Partners field in *OurPartners → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_partners.default.primary.partners[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  partners: prismic.GroupField<
+    Simplify<OurPartnersSliceDefaultPrimaryPartnersItem>
+  >;
+}
+
+/**
+ * Default variation for OurPartners Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurPartnersSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OurPartnersSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *OurPartners*
+ */
+type OurPartnersSliceVariation = OurPartnersSliceDefault;
+
+/**
+ * OurPartners Shared Slice
+ *
+ * - **API ID**: `our_partners`
+ * - **Description**: OurPartners
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurPartnersSlice = prismic.SharedSlice<
+  "our_partners",
+  OurPartnersSliceVariation
+>;
+
+/**
+ * Primary content in *OurSocials → Default → Primary*
+ */
+export interface OurSocialsSliceDefaultPrimary {
+  /**
+   * Heading field in *OurSocials → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_socials.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Body field in *OurSocials → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_socials.default.primary.body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+}
+
+/**
+ * Default variation for OurSocials Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurSocialsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OurSocialsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *OurSocials*
+ */
+type OurSocialsSliceVariation = OurSocialsSliceDefault;
+
+/**
+ * OurSocials Shared Slice
+ *
+ * - **API ID**: `our_socials`
+ * - **Description**: OurSocials
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurSocialsSlice = prismic.SharedSlice<
+  "our_socials",
+  OurSocialsSliceVariation
+>;
+
+/**
  * Item in *Process → Default → Primary → Process*
  */
 export interface ProcessSliceDefaultPrimaryProcessItem {
@@ -2841,6 +3008,15 @@ declare module "@prismicio/client" {
       ImagesCarouselSliceDefaultPrimary,
       ImagesCarouselSliceVariation,
       ImagesCarouselSliceDefault,
+      OurPartnersSlice,
+      OurPartnersSliceDefaultPrimaryPartnersItem,
+      OurPartnersSliceDefaultPrimary,
+      OurPartnersSliceVariation,
+      OurPartnersSliceDefault,
+      OurSocialsSlice,
+      OurSocialsSliceDefaultPrimary,
+      OurSocialsSliceVariation,
+      OurSocialsSliceDefault,
       ProcessSlice,
       ProcessSliceDefaultPrimaryProcessItem,
       ProcessSliceDefaultPrimary,

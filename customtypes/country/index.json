@@ -32,6 +32,54 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "why_us": {
+              "type": "SharedSlice"
+            },
+            "video_reviews": {
+              "type": "SharedSlice"
+            },
+            "wrapper": {
+              "type": "SharedSlice"
+            },
+            "countries": {
+              "type": "SharedSlice"
+            },
+            "google_map": {
+              "type": "SharedSlice"
+            },
+            "images_carousel": {
+              "type": "SharedSlice"
+            },
+            "hero": {
+              "type": "SharedSlice"
+            },
+            "reviews": {
+              "type": "SharedSlice"
+            },
+            "image": {
+              "type": "SharedSlice"
+            },
+            "quote": {
+              "type": "SharedSlice"
+            },
+            "counters": {
+              "type": "SharedSlice"
+            },
+            "our_partners": {
+              "type": "SharedSlice"
+            },
+            "book_consultation": {
+              "type": "SharedSlice"
+            },
+            "our_socials": {
+              "type": "SharedSlice"
+            },
+            "process": {
+              "type": "SharedSlice"
+            },
+            "apply_form": {
+              "type": "SharedSlice"
+            },
             "hero_alternative": {
               "type": "SharedSlice"
             },

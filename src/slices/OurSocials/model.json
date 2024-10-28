@@ -1,8 +1,8 @@
 {
-  "id": "apply_form",
+  "id": "our_socials",
   "type": "SharedSlice",
-  "name": "ApplyForm",
-  "description": "ApplyForm",
+  "name": "OurSocials",
+  "description": "OurSocials",
   "variations": [
     {
       "id": "default",
@@ -12,20 +12,22 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "header": {
-          "type": "Text",
-          "config": {
-            "label": "Header",
-            "placeholder": ""
-          }
-        },
-        "form_instructions": {
+        "heading": {
           "type": "StructuredText",
           "config": {
-            "label": "Form Instructions",
+            "label": "Heading",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,strong,em"
+            "multi": "heading2,em"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
           }
         }
       },

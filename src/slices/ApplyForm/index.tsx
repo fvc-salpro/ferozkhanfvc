@@ -13,9 +13,7 @@ export type ApplyFormProps = SliceComponentProps<Content.ApplyFormSlice>;
 
 const components: JSXMapSerializer = {
   em: ({ children }) => (
-    <em className="text-b14 text-gray-primary italic">
-      {children}
-    </em>
+    <em className="text-b14 text-gray-primary italic">{children}</em>
   ),
   strong: ({ children }) => (
     <strong className="font-semibold">{children}</strong>
@@ -82,12 +80,7 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
       ],
     },
     "work-permit": {
-      required: [
-        "Passport",
-        "CNIC",
-        "White Background Photo",
-        "CV",
-      ],
+      required: ["Passport", "CNIC", "White Background Photo", "CV"],
       optional: [
         "Educational Documents - Fsc DMC",
         "Educational Documents - Matric DMC",
@@ -101,7 +94,6 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
     },
   };
 
-
   const [formValues, setFormValues] = useState<{
     firstName: string;
     lastName: string;
@@ -109,6 +101,8 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
     phoneNumber: string;
     country: string;
     visaType: string;
+    university: string;
+    message: string;
     files: { [key: string]: File | undefined };
   }>({
     firstName: "",
@@ -117,6 +111,8 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
     phoneNumber: "",
     country: "",
     visaType: "",
+    university: "",
+    message: "",
     files: {},
   });
 
@@ -128,7 +124,10 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
     fileErrors: {},
   });
 
-  const selectedDocuments = documentRequirements[formValues.visaType] || { required: [], optional: [] };
+  const selectedDocuments = documentRequirements[formValues.visaType] || {
+    required: [],
+    optional: [],
+  };
 
   const [isLoading, setIsLoading] = useState(false);
   const [checkboxChecked, setCheckboxChecked] = useState(false);
@@ -249,6 +248,8 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
         phoneNumber: "",
         country: "",
         visaType: "",
+        university: "",
+        message: "",
         files: {},
       });
     } else {
@@ -343,6 +344,31 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
                 ]}
               />
             </div>
+            {formValues.visaType == "student-visa" && (
+              <div className="flex flex-row gap-[24px] w-full">
+                <TextInput
+                  label="Desired University"
+                  name="university"
+                  value={formValues.university}
+                  onChange={handleInputChange}
+                  required={false}
+                />
+              </div>
+            )}
+
+            <div className="flex flex-col w-full">
+              <label className="block text-gray-primary mb-2 text-b14">
+                Message
+              </label>
+              <textarea
+                name="message"
+                value={formValues.message}
+                onChange={(e) => handleInputChange(e)}
+                required={false}
+                rows={4}
+                className="w-full p-2 border rounded-md outline-none text-b14 min-h-[100px]"
+              />
+            </div>
 
             {/* Conditionally Render File Uploads */}
             <h3 className="mt-4 font-bold">Required Documents</h3>
@@ -408,7 +434,10 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
                   className="w-[32px] h-[32px]"
                   required
                 />
-                <PrismicRichText components={components} field={slice.primary.form_instructions} />
+                <PrismicRichText
+                  components={components}
+                  field={slice.primary.form_instructions}
+                />
               </label>
             </div>
 

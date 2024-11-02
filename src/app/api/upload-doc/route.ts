@@ -18,6 +18,8 @@ export async function POST(req: NextRequest) {
         const lastName = formData.get("lastName") as string;
         const country = formData.get("country") as string;
         const visaType = formData.get("visaType") as string;
+        const university = formData.get("university") as string;
+        const message = formData.get("message") as string;
         const userEmail = formData.get("email") as string;
         const phoneNumber = formData.get("phoneNumber") as string;
 
@@ -181,10 +183,12 @@ export async function POST(req: NextRequest) {
                     <p>We have received a new visa application with the following details:</p>
                     <div class="details">
                         <p><span>Visa Type:</span> ${visaType}</p>
+                        <p><span>Desired University:</span> ${university}</p>
                         <p><span>Country:</span> ${country}</p>
                         <p><span>Full Name:</span> ${userName}</p>
                         <p><span>Email:</span> ${userEmail}</p>
                         <p><span>Phone Number:</span> ${phoneNumber}</p>
+                        <p><span>Message:</span> ${message}</p>
                     </div>
                     <p>Please review the attached documents for further details. We appreciate your prompt attention to this matter.</p>
                 </div>

@@ -139,7 +139,7 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormValues((prev) => ({
@@ -363,7 +363,7 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
               <textarea
                 name="message"
                 value={formValues.message}
-                onChange={(e) => handleInputChange(e)}
+                onChange={handleInputChange}
                 required={false}
                 rows={4}
                 className="w-full p-2 border rounded-md outline-none text-b14 min-h-[100px]"

@@ -26,10 +26,16 @@ export async function generateMetadata({
     .getByUID("country", params.uid)
     .catch(() => notFound());
 
-  return {
-    title: page.data.meta_title,
-    description: page.data.meta_description,
-  };
+    return {
+      title: page.data.meta_title,
+      description: page.data.meta_description,
+      applicationName: 'Feroz Visa Consultancy',
+      openGraph: {
+        title: page.data.meta_title ?? undefined,
+        description: page.data.meta_description ?? undefined,
+        images: [{ url: page.data.meta_image.url ?? "" }],
+      },
+    };
 }
 
 export async function generateStaticParams() {

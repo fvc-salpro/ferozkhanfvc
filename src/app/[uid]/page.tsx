@@ -21,8 +21,10 @@ export async function generateMetadata({
   return {
     title: asText(page.data.title),
     description: page.data.meta_description,
+    applicationName: 'Feroz Visa Consultancy',
     openGraph: {
       title: page.data.meta_title ?? undefined,
+      description: page.data.meta_description ?? undefined,
       images: [{ url: page.data.meta_image.url ?? "" }],
     },
   };

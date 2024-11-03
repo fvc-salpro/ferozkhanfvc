@@ -81,9 +81,12 @@ export default async function Page({ params }: { params: Params }) {
                 ))}
               </div>
             )}
-            <Link href="#about" className="flex justify-center items-center rounded-full w-[42px] h-[42px] bg-primary/15 animate-bounce duration-500 ease-in-out">
-              <PiArrowDownLight color="#F74C06"/>
-          </Link>
+            <Link
+              href="#about"
+              className="flex justify-center items-center rounded-full w-[42px] h-[42px] bg-primary/15 animate-bounce duration-500 ease-in-out"
+            >
+              <PiArrowDownLight color="#F74C06" />
+            </Link>
           </div>
           <div className="flex justify-center items-center relative">
             {isFilled.image(image) && (
@@ -120,6 +123,12 @@ export async function generateMetadata({
   return {
     title: page.data.meta_title,
     description: page.data.meta_description,
+    applicationName: "Feroz Visa Consultancy",
+    openGraph: {
+      title: page.data.meta_title ?? undefined,
+      description: page.data.meta_description ?? undefined,
+      images: [{ url: page.data.meta_image.url ?? "" }],
+    },
   };
 }
 

@@ -139,6 +139,13 @@
           },
           "thumbnails": []
         }
+      },
+      "keywords": {
+        "type": "Text",
+        "config": {
+          "label": "Keywords",
+          "placeholder": "Add keywords here and separate them by space. "
+        }
       }
     }
   }

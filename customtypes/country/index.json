@@ -133,6 +133,13 @@
           "thumbnails": []
         },
         "type": "Image"
+      },
+      "keywords": {
+        "type": "Text",
+        "config": {
+          "label": "Keywords",
+          "placeholder": ""
+        }
       }
     }
   }

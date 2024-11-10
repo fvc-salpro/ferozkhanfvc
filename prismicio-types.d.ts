@@ -97,6 +97,17 @@ interface CountryDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   meta_image: prismic.ImageField<never>;
+
+  /**
+   * Keywords field in *Country*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: country.keywords
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  keywords: prismic.KeyTextField;
 }
 
 /**
@@ -488,6 +499,17 @@ interface PageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   meta_image: prismic.ImageField<never>;
+
+  /**
+   * Keywords field in *Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Add keywords here and separate them by space.
+   * - **API ID Path**: page.keywords
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  keywords: prismic.KeyTextField;
 }
 
 /**
@@ -663,6 +685,17 @@ interface ServiceDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   meta_image: prismic.ImageField<never>;
+
+  /**
+   * Keywords field in *Service*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: service.keywords
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  keywords: prismic.KeyTextField;
 }
 
 /**

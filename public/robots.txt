@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /admin/
+
+Allow: /public/
+Allow: /images/
+
+User-agent: *
+Disallow: /*.pdf$
+Disallow: /*.zip$
+
+Sitemap: https://www.ferozvisaconsultancy.com/sitemap.xml

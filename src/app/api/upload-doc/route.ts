@@ -184,7 +184,7 @@ export async function POST(req: NextRequest) {
                     <div class="details">
                         <p><span>Visa Type:</span> ${visaType}</p>
                         <p><span>Desired University:</span> ${university}</p>
-                        <p><span>Country:</span> ${country}</p>
+                        <p><span>Desired Country:</span> ${country}</p>
                         <p><span>Full Name:</span> ${userName}</p>
                         <p><span>Email:</span> ${userEmail}</p>
                         <p><span>Phone Number:</span> ${phoneNumber}</p>

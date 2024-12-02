@@ -326,7 +326,7 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
             </div>
             <div className="flex flex-row gap-[24px] w-full">
               <TextInput
-                label="Country"
+                label="Desired Country"
                 name="country"
                 value={formValues.country}
                 onChange={handleInputChange}

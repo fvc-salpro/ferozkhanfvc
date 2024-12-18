@@ -11,6 +11,22 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-montserrat)'],
       },
+      animation: {
+        'spin': 'spin 1s linear infinite',
+        'pulse': 'pulse 1.5s infinite',
+        'fade-in': 'fade-in 0.8s ease-out',
+        'slide-in': 'slide-in 1.5s linear infinite',
+      },
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'slide-in': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+      },
       colors: {
         primary: '#E9B434',
         'primary-alt': '#F7E5B8',

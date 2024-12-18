@@ -3,6 +3,27 @@ import { createFolderIfNotExists, uploadFileToGoogleDrive } from '../../../lib/g
 import { sendNotificationEmail } from '../../../lib/sendEmail';
 import { randomBytes } from 'node:crypto';
 
+export const maxDuration = 60;
+export const dynamic = 'force-dynamic';
+
+function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+    return new Promise((resolve, reject) => {
+        const timer = setTimeout(() => {
+            reject(new Error(`Operation timed out after ${ms / 1000} seconds`));
+        }, ms);
+
+        promise
+            .then((result) => {
+                clearTimeout(timer);
+                resolve(result);
+            })
+            .catch((error) => {
+                clearTimeout(timer);
+                reject(error);
+            });
+    });
+}
+
 export async function POST(req: NextRequest) {
     try {
         const contentType = req.headers.get("content-type");
@@ -63,8 +84,13 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        await Promise.all(
-            files.map((file) => uploadFileToGoogleDrive(file, userFolderId))
+        // Set a timeout of 60 seconds (1 minutes) for the upload process
+        const timeout = 60000;
+        await withTimeout(
+            Promise.all(
+                files.map((file) => uploadFileToGoogleDrive(file, userFolderId))
+            ),
+            timeout
         );
 
         const emailHtml = `
@@ -220,6 +246,13 @@ export async function POST(req: NextRequest) {
             { status: 200 }
         );
     } catch (error: any) {
+        if (error.message.includes("timed out")) {
+            return NextResponse.json(
+                { error: "File upload process timed out. Please try again." },
+                { status: 504 }
+            );
+        }
+
         return NextResponse.json(
             { error: `Error processing the request: ${error.message}` },
             { status: 500 }

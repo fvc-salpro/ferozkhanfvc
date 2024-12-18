@@ -229,39 +229,61 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
 
     setIsLoading(true);
 
-    const response = await fetch("/api/upload-doc", {
-      method: "POST",
-      body: formData,
-    });
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 60000);
 
-    setIsLoading(false);
+    try {
+      const response = await fetch("/api/upload-doc", {
+        method: "POST",
+        body: formData,
+        signal: controller.signal,
+      });
 
-    if (response.ok) {
-      setMessages({
-        general:
-          "Application submitted successfully! You will receive an Email Shortly.",
-      });
-      setFormValues({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phoneNumber: "",
-        country: "",
-        visaType: "",
-        university: "",
-        message: "",
-        files: {},
-      });
-    } else {
-      setMessages({
-        general: "Failed to submit the application. Please try again.",
+      clearTimeout(timeoutId);
+
+      if (response.ok) {
+        setMessages({
+          general:
+            "Application submitted successfully! You will receive an email shortly.",
+        });
+        setFormValues({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phoneNumber: "",
+          country: "",
+          visaType: "",
+          university: "",
+          message: "",
+          files: {},
+        });
+      } else {
+        setMessages({
+          general:
+            "Failed to submit the application. Please re-submit the form. If the issue persists, try reducing the number of files or file sizes.",
+        });
+      }
+    } catch (error) {
+      if (error?.name === "AbortError") {
+        setMessages({
+          general:
+            "The request timed out. Please try re-submitting the form, and consider reducing the number of files or file sizes.",
+        });
+      } else {
+        setMessages({
+          general:
+            "An error occurred while submitting the application. Please try again.",
+        });
+      }
+    } finally {
+      setIsLoading(false);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
       });
     }
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
   };
+
 
   return (
     <section
@@ -270,21 +292,40 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
       className="bg-white"
       id="apply-now"
     >
+      {isLoading && (
+        <div className="fixed inset-0 bg-primary/80 z-50 flex items-center justify-center">
+          <div className="flex flex-col items-center justify-center animate-fade-in">
+            {/* Spinner */}
+            <div className="relative w-16 h-16">
+              <div className="absolute inset-0 rounded-full border-4 border-t-transparent border-b-transparent border-l-white border-r-primary animate-spin"></div>
+            </div>
+
+            {/* Glowing text */}
+            <p className="mt-6 px-4 text-center text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-white tracking-wide animate-pulse">
+              Submitting your application, please wait...
+            </p>
+
+            {/* Optional: Animated gradient bar */}
+            <div className="mt-4 w-48 sm:w-64 h-2 bg-gradient-to-r from-white via-primary to-primary-light rounded-full overflow-hidden">
+              <div className="w-16 h-2 bg-primary-light rounded-full animate-slide-in"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+
       <Bounded
         as="div"
         yPadding="base"
         className="bg-white md:px-[32px] px-[24px]"
       >
         <h2 className="text-2xl mb-6 text-center">{slice.primary.header}</h2>
-        {messages.general && (
-          <div className="mb-4 p-2 bg-red-100 text-blue-700 rounded-md">
-            {messages.general}
-          </div>
-        )}
         <div className="flex flex-col gap-[30px] justify-center items-center">
-          {/* <div className="mb-[24px] p-4 bg-primary/10 rounded-md border border-primary/5 h-fit max-w-[620px]">
-            <PrismicRichText field={slice.primary.form_instructions} />
-          </div> */}
+          {messages.general && (
+            <div className="mb-4 p-2 bg-primary/80 text-dark rounded-md text-center">
+              {messages.general}
+            </div>
+          )}
           <form
             className="flex w-full flex-col gap-[14px] max-w-[620px]"
             onSubmit={handleSubmit}

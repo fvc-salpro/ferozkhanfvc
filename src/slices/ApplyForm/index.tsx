@@ -258,10 +258,14 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
           files: {},
         });
       } else {
+        const data = await response.json();
         setMessages({
-          general:
-            "Failed to submit the application. Please re-submit the form. If the issue persists, try reducing the number of files or file sizes.",
+          general: `${data.error} (Status: ${data.status})`,
         });
+        // setMessages({
+        //   general:
+        //     "Failed to submit the application. Please re-submit the form. If the issue persists, try reducing the number of files or file sizes.",
+        // });
       }
     } catch (error) {
       if (error?.name === "AbortError") {

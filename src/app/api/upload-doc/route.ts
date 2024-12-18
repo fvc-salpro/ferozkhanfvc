@@ -208,7 +208,7 @@ export async function POST(req: NextRequest) {
                     <p>Dear Team,</p>
                     <p>We have received a new visa application with the following details:</p>
                     <div class="details">
-                        <p><span>Visa Type:</span> ${visaType}</p>
+                        <p><span>Visa Type:</span> ${visaType.replace('-', ' ').toUpperCase() ?? visaType}</p>
                         <p><span>Desired University:</span> ${university}</p>
                         <p><span>Desired Country:</span> ${country}</p>
                         <p><span>Full Name:</span> ${userName}</p>
@@ -232,7 +232,7 @@ export async function POST(req: NextRequest) {
         try {
             await sendNotificationEmail(
                 [userEmail, process.env.OWNER_EMAIL!],
-                `Document Submission for Visa: ${visaType} Country: ${country} By: ${userName}`,
+                `Document Submission for Visa: ${visaType.replace('-', ' ').toUpperCase() ?? visaType} Country: ${country} By: ${userName}`,
                 emailHtml,
                 files.map((file) => ({
                     filename: file.originalname,

@@ -27,69 +27,42 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
   const documentRequirements = {
     "student-visa": {
       required: [
-        "Passport",
-        "CNIC",
-        "White Background Photo",
         "CV",
-        "HSSC DMC",
-        "HSSC Certificate",
-        "Recommendation Letter 01",
-        "Recommendation Letter 02",
-        "English Proficiency Certificate",
+        "CNIC",
+        "Passport",
+        "Latest Education DMC/Transcript",
+        "Latest Education Certificate/Degree",
+        "English Proficiency Certificate OR English Test",
       ],
       optional: [
-        "English Test Certificate",
-        "Matric DMC",
-        "Matric Certificate",
-        "Bachelor Degree Certificate",
-        "Bachelor Transcript",
-        "Experience Certificate",
-        "Travel History - Visa Stickers",
-        "Travel History - E-Visas",
-        "Travel History - Refusal Letters",
+        "Work Experience Certificate",
       ],
     },
     "visit-visa": {
       required: [
-        "Passport",
-        "CNIC",
-        "White Background Photo",
         "CV",
-        "Business Registration Docs - NTN",
-        "Business Registration Docs - Tax Return",
-        "Business Registration Docs - Tax Exemption",
-        "Business Registration Docs - Chamber Membership Certificate",
-        "Business Registration Docs - Job Service Letter",
-        "Business Registration Docs - NOC from Employer",
-        "6 Months Bank Statement - Salary Account",
-        "6 Months Bank Statement - Business Account",
-        "Bank Maintenance Letter",
+        "CNIC",
+        "Passport",
+        "Latest Education DMC/Transcript",
+        "Latest Education Certificate/Degree",
+        "English Proficiency Certificate OR English Test",
       ],
       optional: [
-        "Business Visiting Card",
-        "Business Letterhead",
-        "Business Place/Office Photos - Front with Banner",
-        "Business Place/Office Photos - Sitting Area",
-        "Business Place/Office Photos - Storage",
-        "Visit Purpose Documentation",
-        "Sponsor Certificate",
-        "Invitation from Contact",
         "Travel History - Visa Stickers",
-        "Travel History - E-Visas",
         "Travel History - Refusal Letters",
       ],
     },
     "work-permit": {
-      required: ["Passport", "CNIC", "White Background Photo", "CV"],
+      required: [
+        "CV",
+        "CNIC",
+        "Passport",
+        "Latest Education DMC/Transcript",
+        "Latest Education Certificate/Degree",
+        "English Proficiency Certificate OR English Test",
+      ],
       optional: [
-        "Educational Documents - Fsc DMC",
-        "Educational Documents - Matric DMC",
-        "Educational Documents - BSc DMC",
-        "Educational Documents - MSc DMC",
-        "Work Experience Certificates - Job Certificates",
-        "Work Experience Certificates - Training Certificates",
-        "Travel History - Visa Stickers",
-        "Travel History - Refusal Letters",
+        "Work Experience Certificate",
       ],
     },
   };
@@ -262,16 +235,12 @@ const ApplyForm = ({ slice }: ApplyFormProps): JSX.Element => {
         setMessages({
           general: `${data.error} (Status: ${data.status})`,
         });
-        // setMessages({
-        //   general:
-        //     "Failed to submit the application. Please re-submit the form. If the issue persists, try reducing the number of files or file sizes.",
-        // });
       }
     } catch (error) {
       if (error?.name === "AbortError") {
         setMessages({
           general:
-            "The request timed out. Please try re-submitting the form, and consider reducing the number of files or file sizes.",
+            "The request timed out. Please try re-submitting the form, and consider reducing the file sizes.",
         });
       } else {
         setMessages({
